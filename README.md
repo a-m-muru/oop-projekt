@@ -4,6 +4,7 @@ Teeme mängu. Sellist, mida saaksime mängida konsoolis, ilma graafilise liidese
 Inspiratsiooni saime mängust Rogue, kuhu meie oma mänguga välja jõuame, veel ei tea:)
 Mängu eesmärgiks on ...
 Üldiselt töötab mäng niimodi, et mängija annab sisendi ning vastavalt sellele liigub tegelane mängumaailmas ringi. 
+Nagu igas mängus, ka meil on mõned Easter Egg'id:) 
 Kasutusjuhend: 
 Klassid: (iga klassi kohta eraldi selle eesmärk ja olulisemad meetodid;)
 -Mang
