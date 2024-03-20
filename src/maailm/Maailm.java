@@ -7,11 +7,29 @@ import java.util.Arrays;
 
 public class Maailm {
     private char[][] maastik;
-    private Tegelane[] tegelased = new Tegelane[100];
+    private Tegelane[] tegelased = new Tegelane[255];
     private Mangija mangija;
 
     public char[][] hangiMaastik() {
         return maastik;
+    }
+
+    public void seaMaastikuKoht(int x, int y, char taht) {
+        if (x < 0 || x >= hangiSuurusX() || y < 0 || y >= hangiSuurusY())
+            throw new RuntimeException("koordinaadid maastiku mõõtmetest väljas");
+        maastik[y][x] = taht;
+    }
+
+    public char hangiMaastikuKoht(int x, int y) {
+        if (x < 0 || x >= hangiSuurusX() || y < 0 || y >= hangiSuurusY())
+            throw new RuntimeException("koordinaadid maastiku mõõtmetest väljas");
+        return maastik[y][x];
+    }
+
+    public char hangiMaastikuKohtVoiNull(int x, int y) {
+        if (x < 0 || x >= hangiSuurusX() || y < 0 || y >= hangiSuurusY())
+            return Character.MIN_VALUE;
+        return maastik[y][x];
     }
 
     public int hangiSuurusX() {

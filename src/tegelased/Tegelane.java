@@ -27,7 +27,9 @@ public class Tegelane {
     }
 
     public void muudaXPos(int vorra) {
-        this.xPos = Math.min(Math.max(this.xPos + vorra, 0), maailm.hangiSuurusX() - 1);
+        int liiguKuhu = Math.min(Math.max(this.xPos + vorra, 0), maailm.hangiSuurusX() - 1);
+        if (!(maailm.hangiMaastikuKoht(liiguKuhu, yPos) == '#'))
+            this.xPos = liiguKuhu;
     }
 
     public int hangiYPos() {
@@ -39,13 +41,16 @@ public class Tegelane {
     }
 
     public void muudaYPos(int vorra) {
-        this.yPos += vorra;
+        int liiguKuhu = Math.min(Math.max(this.yPos + vorra, 0), maailm.hangiSuurusY() - 1);
+        if (!(maailm.hangiMaastikuKoht(xPos, liiguKuhu) == '#'))
+            this.yPos = liiguKuhu;
     }
 
     public Tegelane(int xPos, int yPos) {
         this.xPos = xPos;
         this.yPos = yPos;
     }
+
     public Tegelane() {
         this.xPos = 0;
         this.yPos = 0;
