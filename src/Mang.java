@@ -1,7 +1,6 @@
 import maailm.Maailm;
 import tegelased.Mangija;
 import visuaal.Kuvaja;
-
 import java.util.Scanner;
 
 public class Mang {
@@ -20,6 +19,7 @@ public class Mang {
             pohiTsykkel();
         }
     }
+
 
     private void pohiTsykkel() {
         Kuvaja.kuva(maailm);
