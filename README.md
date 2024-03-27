@@ -17,11 +17,13 @@ Klassid: (iga klassi kohta eraldi selle eesmärk ja olulisemad meetodid;)
 Projektiga alustasime 13.03.2024, saime kokku ja asusime tööle. Tegime valmis põhiklassid, mõned meetodid ja lahendasime sisendi probleemi- programm ei tahtnud meie sisendist aru saada ja tegelast liigutada ilma, et ta uuesti terve maailma väljastaks.
 Klasside ja meetodite tegemine oli üsna lihtne, kuid sisendi probleemi lahendamine võttis aega.
 20.03.2024 oli meie teine kohtumine, kus Aksel Martin arendas edasi maastikku ja maailma ning Liina tegeles mängu reeglite ja omaduste paikapanemisega.
+27.03.2024 kohtusime uuesti ja tegelesime ruumidega, tegelaste positsioonidega ja punktisüsteemi genereerimisega
 ...
 
 iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
 
 tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
+Üks probleemidest, millega puutusime kokku oli non blocking input ehk me ei saanud teha nii, et mäng loeks mängija inputi kohe, ilma enter-klahvi vajutamata. 
 
 hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
 
@@ -31,12 +33,15 @@ MÄNGUST:
 Tegelased: 
 * on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima erineva raskusastmega tube. Peategelase tähis on "@". 
 * tegelased, kes liiguvad ringi mängumaailmas ning takistavad peategelasel tubade läbimist. Tegelaste tähis on "Ö".
+* peategelasel on võimalik koguda punkte
 * ...
 Maailm: 
 * Mänguväli, kus tegelane liigub ringi. Koosneb erinevatest tubadest.
 * Erinevatel tubadel võib olla erinev läbimise raskusaste. 
 * Maailmal on kindel suurus, millest välja tegelane ei pääse.
+* Tegelane ei pääse välja ka toast kus ta parasjagu asub, kui ta ei ole teinud ära pääsemiseks vajalikku ülesannet
 * ...
 Takistused:
 * Takistused on mõeldud selleks, et teha mängu mängimise põnevamaks ja tubade läbimise keerulisemaks.
-* Takistustega kokkupuutel on võimalik kaotada elusid.
+* Näiteks on takistuseks ruumi seinad, kus tegelane parasjagu asub. 
+* 
