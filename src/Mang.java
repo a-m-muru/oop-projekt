@@ -1,6 +1,5 @@
+import abi.Koordinaat;
 import maailm.Maailm;
-import maailm.Tuba;
-import netscape.javascript.JSObject;
 import tegelased.Mangija;
 import tegelased.Tegelane;
 import visuaal.Kuvaja;
@@ -18,27 +17,20 @@ public class Mang {
 
     public void alusta() {
         algusaeg = System.currentTimeMillis();
-        Mangija mangija = new Mangija(25, 5);
-        this.maailm = new Maailm(500, 500, mangija);
-        maailm.lisaTegelane(mangija);
+        this.maailm = new Maailm(500, 500);
+        Mangija mangija = new Mangija(maailm, 50, 50);
+        maailm.seaMangija(mangija);
      // testimiseks mingid
-        for (int i = 0; i < 25; i++) {
-            Tuba t = new Tuba(
-                    maailm,
-                    (int)(Math.random() * maailm.hangiSuurusX()),
-                    (int)(Math.random() * maailm.hangiSuurusY()),
-                    (int)(Math.random() * 30),
-                    (int)(Math.random() * 30));
-            t.genereeriTuba();
-        }
-        int tegelasteArv = 100;
+
+        int tegelasteArv = 10000;
         joosevad = new Tegelane[tegelasteArv];
         for (int i = 0; i < tegelasteArv; i++) {
             Tegelane tegelane = new Tegelane(
+                    maailm,
                     (int)(Math.random() * maailm.hangiSuurusX()),
                     (int)(Math.random() * maailm.hangiSuurusY())
             );
-            tegelane.setSymbol('Ö');
+            tegelane.seaSymbol('Ö');
             maailm.lisaTegelane(tegelane);
             joosevad[i] = tegelane;
         }
@@ -51,14 +43,14 @@ public class Mang {
 
     private void pohiTsykkel(boolean sisendiga) {
         for (Tegelane tegelane : joosevad) {
-            tegelane.muudaYPos((int) (Math.random() * 3) - 1);
-            tegelane.muudaXPos((int) (Math.random() * 3) - 1);
+            Koordinaat suund = new Koordinaat((int) (Math.random() * 3) - 1, (int) (Math.random() * 3) - 1);
+            tegelane.muudaPos(suund);
         }
         if (sisendiga) {
             Kuvaja.kustuta();
+            Kuvaja.kuva(maailm);
             System.out.printf("moodunud %d sammu\n", sammudMoodunud - viimaneUuendus);
             viimaneUuendus = sammudMoodunud;
-            Kuvaja.kuva(maailm);
             String n = silm.nextLine();
             haldaSisendit(n);
             return;
@@ -76,10 +68,10 @@ public class Mang {
 
     private void teeMidagi(String n) {
         switch (n) {
-            case "d" -> maailm.hangiMangija().muudaXPos(1);
-            case "a" -> maailm.hangiMangija().muudaXPos(-1);
-            case "w" -> maailm.hangiMangija().muudaYPos(-1);
-            case "s" -> maailm.hangiMangija().muudaYPos(1);
+            case "d" -> maailm.hangiMangija().muudaPos(new Koordinaat(1, 0));
+            case "a" -> maailm.hangiMangija().muudaPos(new Koordinaat(-1, 0));
+            case "w" -> maailm.hangiMangija().muudaPos(new Koordinaat(0, -1));
+            case "s" -> maailm.hangiMangija().muudaPos(new Koordinaat(0, 1));
         }
     }
 }

@@ -1,9 +1,10 @@
 package visuaal;
 
+import abi.Koordinaat;
 import maailm.Maailm;
 import tegelased.Tegelane;
 
-import java.util.Arrays;
+import java.util.HashMap;
 
 public class Kuvaja {
     private static int xAknaSuurus = 60;
@@ -14,27 +15,29 @@ public class Kuvaja {
         char[][] pilt = new char[yAknaSuurus][xAknaSuurus];
         for (int y = 0; y < yAknaSuurus; y++) {
             for (int x = 0; x < xAknaSuurus; x++) {
-                int pildiY = y + maailm.hangiMangija().hangiYPos() - yAknaSuurus / 2;
-                int pildiX = x + maailm.hangiMangija().hangiXPos() - xAknaSuurus / 2;
+                int pildiY = y + maailm.hangiMangija().hangiKoordinaat().y - yAknaSuurus / 2;
+                int pildiX = x + maailm.hangiMangija().hangiKoordinaat().x - xAknaSuurus / 2;
                 pilt[y][x] = (maailm.hangiMaastikuKohtVoiNull(pildiX, pildiY) == Character.MIN_VALUE)
                         ? ' ' : maailm.hangiMaastikuKoht(pildiX, pildiY);
             }
         }
-        Tegelane[] tegelased = maailm.hangiTegelased();
-        for (int i = tegelased.length - 1; i >= 0; i--) {
-            Tegelane tegelane = tegelased[i];
+        HashMap<Koordinaat, Tegelane> tegelased = maailm.hangiTegelased();
+        for (Koordinaat k : tegelased.keySet()) {
+            Tegelane tegelane = tegelased.get(k);
             if (tegelane == null) continue;
-            int pildiY = tegelane.hangiYPos() - maailm.hangiMangija().hangiYPos() + yAknaSuurus / 2;
-            int pildiX = tegelane.hangiXPos() - maailm.hangiMangija().hangiXPos() + xAknaSuurus / 2;
+            int pildiY = tegelane.hangiKoordinaat().y - maailm.hangiMangija().hangiKoordinaat().y + yAknaSuurus / 2;
+            int pildiX = tegelane.hangiKoordinaat().x - maailm.hangiMangija().hangiKoordinaat().x + xAknaSuurus / 2;
             if (pildiX >= xAknaSuurus || pildiY >= yAknaSuurus || pildiX < 0 || pildiY < 0)
                 continue;
-            pilt[pildiY][pildiX] = tegelane.getSymbol();
+            pilt[pildiY][pildiX] = tegelane.hangiSymbol();
         }
         return pilt;
     }
 
     public static void kustuta() {
-        System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+        //System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
     public static void kuva(Maailm maailm) {

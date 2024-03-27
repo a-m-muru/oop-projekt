@@ -1,13 +1,16 @@
 package maailm;
 
+import abi.Abi;
+import abi.Koordinaat;
 import tegelased.Mangija;
 import tegelased.Tegelane;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Maailm {
     private char[][] maastik;
-    private Tegelane[] tegelased = new Tegelane[255];
+    private HashMap<Koordinaat, Tegelane> tegelased = new HashMap<>();
     private Mangija mangija;
 
     public char[][] hangiMaastik() {
@@ -15,21 +18,25 @@ public class Maailm {
     }
 
     public void seaMaastikuKoht(int x, int y, char taht) {
-        if (x < 0 || x >= hangiSuurusX() || y < 0 || y >= hangiSuurusY())
+        if (!onMootmetes(x, y))
             throw new RuntimeException("koordinaadid maastiku mõõtmetest väljas");
         maastik[y][x] = taht;
     }
 
     public char hangiMaastikuKoht(int x, int y) {
-        if (x < 0 || x >= hangiSuurusX() || y < 0 || y >= hangiSuurusY())
+        if (!onMootmetes(x, y))
             throw new RuntimeException("koordinaadid maastiku mõõtmetest väljas");
         return maastik[y][x];
     }
 
     public char hangiMaastikuKohtVoiNull(int x, int y) {
-        if (x < 0 || x >= hangiSuurusX() || y < 0 || y >= hangiSuurusY())
+        if (!onMootmetes(x, y))
             return Character.MIN_VALUE;
         return maastik[y][x];
+    }
+
+    public boolean onMootmetes(int x, int y) {
+        return ! (x < 0 || x >= hangiSuurusX() || y < 0 || y >= hangiSuurusY());
     }
 
     public int hangiSuurusX() {
@@ -44,14 +51,15 @@ public class Maailm {
         return mangija;
     }
 
-    public Maailm(int suurus, Mangija mangija) {
+    public Maailm(int suurus) {
         looMaastik(suurus, suurus);
-        this.mangija = mangija;
-        lisaTegelane(mangija);
     }
 
-    public Maailm(int x, int y, Mangija mangija) {
+    public Maailm(int x, int y) {
         looMaastik(x, y);
+    }
+
+    public void seaMangija(Mangija mangija) {
         this.mangija = mangija;
         lisaTegelane(mangija);
     }
@@ -59,29 +67,26 @@ public class Maailm {
     private void looMaastik(int x, int y) {
         this.maastik = new char[y][x];
         for (int i = 0; i < maastik.length; i++) {
-            Arrays.fill(maastik[i], '.');
+            for (int j = 0; j < maastik[i].length; j++) {
+                maastik[i][j] = (Math.random() < 0.75) ? '.' : ' ';
+            }
+            //Arrays.fill(maastik[i], (Math.random() < 0.75) ? '.' : ' ');
         }
     }
 
     public void lisaTegelane(Tegelane tegelane) {
-        for (int i = 0; i < tegelased.length; i++) {
-            if (tegelased[i] == tegelane) {
-                return;
-            }
-            if (tegelased[i] == null) {
-                tegelased[i] = tegelane;
-                tegelane.id = i;
-                tegelane.maailm = this;
-                return;
-            }
-        }
+        tegelased.put(tegelane.hangiKoordinaat(), tegelane);
     }
 
-    public Tegelane hangiTegelane(int id) {
-        return tegelased[id];
+    public Tegelane hangiTegelane(Koordinaat kus) {
+        return tegelased.get(kus);
     }
 
-    public Tegelane[] hangiTegelased() {
+    public Tegelane hangiTegelane(int x, int y) {
+        return hangiTegelane(new Koordinaat(x, y));
+    }
+
+    public HashMap<Koordinaat, Tegelane> hangiTegelased() {
         return tegelased;
     }
 }

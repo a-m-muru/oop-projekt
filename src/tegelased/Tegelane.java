@@ -1,58 +1,38 @@
 package tegelased;
 
+import abi.Koordinaat;
 import maailm.Maailm;
+import maailm.Punkt;
 
-public class Tegelane {
-
+public class Tegelane extends Punkt {
     public int id;
-    public Maailm maailm;
-    protected int xPos;
-    protected int yPos;
-    protected char symbol = '@';
 
-    public char getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(char symbol) {
-        this.symbol = symbol;
-    }
-
-    public int hangiXPos() {
-        return xPos;
-    }
-
-    public void seaXPos(int xPos) {
-        this.xPos = xPos;
-    }
-
-    public void muudaXPos(int vorra) {
-        int liiguKuhu = Math.min(Math.max(this.xPos + vorra, 0), maailm.hangiSuurusX() - 1);
-        if (!(maailm.hangiMaastikuKoht(liiguKuhu, yPos) == '#'))
-            this.xPos = liiguKuhu;
-    }
-
-    public int hangiYPos() {
-        return yPos;
-    }
-
-    public void seaYPos(int yPos) {
-        this.yPos = yPos;
-    }
-
-    public void muudaYPos(int vorra) {
-        int liiguKuhu = Math.min(Math.max(this.yPos + vorra, 0), maailm.hangiSuurusY() - 1);
-        if (!(maailm.hangiMaastikuKoht(xPos, liiguKuhu) == '#'))
-            this.yPos = liiguKuhu;
-    }
-
-    public Tegelane(int xPos, int yPos) {
+    public Tegelane(Maailm maailm, int xPos, int yPos) {
+        super(maailm, xPos, yPos);
+        maailm.lisaTegelane(this);
         this.xPos = xPos;
         this.yPos = yPos;
     }
 
-    public Tegelane() {
+    public Tegelane(Maailm maailm) {
+        super(maailm);
+        maailm.lisaTegelane(this);
         this.xPos = 0;
         this.yPos = 0;
+    }
+
+    @Override
+    public void muudaPos(Koordinaat vorra) {
+        //System.out.println("vana: " + hangiKoordinaat());
+        //System.out.println("vorra: " + vorra);
+        Koordinaat uus = new Koordinaat(hangiKoordinaat(), vorra);
+        //System.out.println("uus: " + uus);
+        if (maailm.hangiTegelane(uus) != null
+                || !maailm.onMootmetes(uus.x, uus.y)
+                || maailm.hangiMaastikuKoht(uus.x, uus.y) == '#') {
+            return;
+        }
+        super.muudaPos(vorra);
+        //System.out.println("uus pos: " + hangiKoordinaat());
     }
 }

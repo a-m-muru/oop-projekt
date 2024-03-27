@@ -19,11 +19,13 @@ public class Tuba {
         int loppY = Math.min(yAlgus + ySuurus, maailm.hangiSuurusY());
         int loppX = Math.min(xAlgus + xSuurus, maailm.hangiSuurusX());
         for (int i = yAlgus; i < loppY; i++) {
-            if (i == yAlgus || i >= loppY - 1)
-                for (int j = 1; j < loppX - 1; j++) {
+            if (i == yAlgus || i == loppY - 1) {
+                System.out.println(i + " " + yAlgus);
+                for (int j = xAlgus; j < loppX - 1; j++) {
                     maailm.seaMaastikuKoht(j, i, '#');
                 }
-            maailm.seaMaastikuKoht(0, i, '#');
+            }
+            maailm.seaMaastikuKoht(xAlgus, i, '#');
             maailm.seaMaastikuKoht(loppX - 1, i, '#');
         }
     }
