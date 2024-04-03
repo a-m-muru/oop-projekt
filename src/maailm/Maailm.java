@@ -14,6 +14,7 @@ import java.util.HashMap;
 public class Maailm {
     private char[][] maastik;
     private HashMap<Koordinaat, Tegelane> tegelased = new HashMap<>();
+    private HashMap<Koordinaat, Ese> esemed = new HashMap<>();
     private Mangija mangija;
 
     public char[][] hangiMaastik() {

@@ -57,4 +57,13 @@ public class Kuvaja {
         }
         System.out.println();
     }
+
+    /**
+     * Prindib mängu seisu
+     * @param sammudMoodunud mitu sammu on mängus toimunud
+     * @param viimaneUuendus mis sammu nr oli viimane uuendus
+     */
+    public static void kuvaSeis(long sammudMoodunud, long viimaneUuendus) {
+        System.out.printf("möödunud %d sammu\n", sammudMoodunud - viimaneUuendus);
+    }
 }

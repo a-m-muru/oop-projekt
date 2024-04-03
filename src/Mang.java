@@ -59,7 +59,7 @@ public class Mang {
         if (sisendiga) {
             Kuvaja.kustuta();
             Kuvaja.kuva(maailm);
-            System.out.printf("moodunud %d sammu\n", sammudMoodunud - viimaneUuendus);
+            Kuvaja.kuvaSeis(sammudMoodunud, viimaneUuendus);
             viimaneUuendus = sammudMoodunud;
             String n = silm.nextLine();
             haldaSisendit(n);

@@ -9,5 +9,9 @@ public class Ese extends Punkt {
         super(maailm, xPos, yPos);
     }
 
+    public void kontrolliKasKeegiSeisabPeal() {
+        // vaata maailma tegelaste mapist kas keegi istub sellel koordinaadil
+        // kui on siis prindi midagi ja kustuta ese praegu
+    }
 
 }
