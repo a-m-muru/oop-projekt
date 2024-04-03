@@ -13,11 +13,11 @@ public abstract class Punkt {
     protected int xPos;
     protected int yPos;
     protected char symbol = '?';
-    protected HashMap<Koordinaat, Punkt> viideSalvestuskohale;
+    protected HashMap<Long, Punkt> viideSalvestuskohale;
 
     public Punkt(
             Maailm maailm,
-            HashMap<Koordinaat, Punkt> viideSalvestuskohale,
+            HashMap<Long, Punkt> viideSalvestuskohale,
             int xPos, int yPos,
             char symbol) {
         this.maailm = maailm;
@@ -29,7 +29,7 @@ public abstract class Punkt {
 
     public Punkt(
             Maailm maailm,
-            HashMap<Koordinaat, Punkt> viideSalvestuskohale,
+            HashMap<Long, Punkt> viideSalvestuskohale,
             int xPos, int yPos) {
         this.maailm = maailm;
         this.viideSalvestuskohale = viideSalvestuskohale;
@@ -37,7 +37,7 @@ public abstract class Punkt {
         this.yPos = yPos;
     }
 
-    public Punkt(Maailm maailm, HashMap<Koordinaat, Punkt> viideSalvestuskohale) {
+    public Punkt(Maailm maailm, HashMap<Long, Punkt> viideSalvestuskohale) {
         this.viideSalvestuskohale = viideSalvestuskohale;
         this.maailm = maailm;
     }

@@ -29,9 +29,9 @@ public class Kuvaja {
                         ? ' ' : maailm.hangiMaastikuKoht(pildiX, pildiY);
             }
         }
-        HashMap<Koordinaat, Punkt> tegelased = maailm.hangiTegelased();
-        for (Koordinaat k : tegelased.keySet()) {
-            Tegelane tegelane = (Tegelane) tegelased.get(k);
+        HashMap<Long, Punkt> tegelased = maailm.hangiTegelased();
+        for (Punkt p : tegelased.values()) {
+            Tegelane tegelane = (Tegelane) p;
             if (tegelane == null) continue;
             int pildiY = tegelane.hangiKoordinaat().y - maailm.hangiMangija().hangiKoordinaat().y + yAknaSuurus / 2;
             int pildiX = tegelane.hangiKoordinaat().x - maailm.hangiMangija().hangiKoordinaat().x + xAknaSuurus / 2;
@@ -40,14 +40,15 @@ public class Kuvaja {
             pilt[pildiY][pildiX] = tegelane.hangiSymbol();
         }
 
-        HashMap<Koordinaat, Punkt> esemed = maailm.hangiEsemed();
-        for (Koordinaat e : esemed.keySet()) {
-            Ese ese = (Ese) esemed.get(e);
+        HashMap<Long, Punkt> esemed = maailm.hangiEsemed();
+        for (Punkt k : esemed.values()) {
+            Ese ese = (Ese) k;
             if (ese == null) continue;
-            int esemeY = ese.hangiKoordinaat().y;
-            int esemeX = ese.hangiKoordinaat().x;
-            pilt[esemeY][esemeX] = ese.hangiSymbol();
-
+            int pildiY = ese.hangiKoordinaat().y - maailm.hangiMangija().hangiKoordinaat().y + yAknaSuurus / 2;
+            int pildiX = ese.hangiKoordinaat().x - maailm.hangiMangija().hangiKoordinaat().x + xAknaSuurus / 2;
+            if (pildiX >= xAknaSuurus || pildiY >= yAknaSuurus || pildiX < 0 || pildiY < 0)
+                continue;
+            pilt[pildiY][pildiX] = ese.hangiSymbol();
         }
 
         return pilt;

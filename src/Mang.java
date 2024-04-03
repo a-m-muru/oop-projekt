@@ -1,5 +1,7 @@
 import abi.Koordinaat;
+import maailm.Ese;
 import maailm.Maailm;
+import maailm.Punkt;
 import tegelased.Mangija;
 import tegelased.Tegelane;
 import visuaal.Kuvaja;
@@ -43,8 +45,15 @@ public class Mang {
                     (int)(Math.random() * maailm.hangiSuurusY())
             );
             tegelane.seaSymbol('Ö');
-            maailm.lisaTegelane(tegelane);
             joosevad[i] = tegelane;
+        }
+        for (int i = 0; i < 1; i++) {
+            Ese ese = new Ese(
+                    maailm,
+                    50,
+                    52
+            );
+            ese.seaSymbol('$');
         }
 
         jookseb = true;
@@ -58,6 +67,7 @@ public class Mang {
      * @param sisendiga tõeväärtus, kas peaks sisendit kontrollima.
      */
     private void pohiTsykkel(boolean sisendiga) {
+        // debug
         for (Tegelane tegelane : joosevad) {
             int kuhu = (int)(Math.random() * 3) - 1;
             boolean xVoiY = Math.random() < 0.5;
@@ -72,6 +82,10 @@ public class Mang {
             String n = silm.nextLine();
             haldaSisendit(n);
             return;
+        }
+        for (Punkt pt : maailm.hangiEsemed().values()) {
+            Ese ese = (Ese) pt;
+            ese.kontrolliKasKeegiSeisabPeal();
         }
         sammudMoodunud++;
     }

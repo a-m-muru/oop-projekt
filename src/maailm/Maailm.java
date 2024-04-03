@@ -11,8 +11,8 @@ import java.util.HashMap;
  */
 public class Maailm {
     private char[][] maastik;
-    private HashMap<Koordinaat, Punkt> tegelased = new HashMap<>();
-    private HashMap<Koordinaat, Punkt> esemed = new HashMap<>();
+    private HashMap<Long, Punkt> tegelased = new HashMap<>();
+    private HashMap<Long, Punkt> esemed = new HashMap<>();
     private Mangija mangija;
 
     public char[][] hangiMaastik() {
@@ -66,11 +66,6 @@ public class Maailm {
         lisaTegelane(mangija);
     }
 
-    public void seaEse(Ese ese) {
-        this.ese = ese;
-        lisaEse(ese);
-    }
-
     private void looMaastik(int x, int y) {
         this.maastik = new char[y][x];
         for (int i = 0; i < maastik.length; i++) {
@@ -82,34 +77,51 @@ public class Maailm {
     }
 
     public void lisaTegelane(Tegelane tegelane) {
-        tegelased.put(tegelane.hangiKoordinaat(), tegelane);
+        tegelased.put(koordinaatArvuks(tegelane.hangiKoordinaat()), tegelane);
+    }
+
+    public void kustutaTegelane(Tegelane tegelane) {
+        tegelased.remove(koordinaatArvuks(tegelane.hangiKoordinaat()));
     }
 
     public Tegelane hangiTegelane(Koordinaat kus) {
-        return (Tegelane) tegelased.get(kus);
+        long mis = koordinaatArvuks(kus);
+        return (Tegelane) tegelased.get(mis);
     }
 
     public Tegelane hangiTegelane(int x, int y) {
         return hangiTegelane(new Koordinaat(x, y));
     }
 
-    public HashMap<Koordinaat, Punkt> hangiTegelased() {
+    public HashMap<Long, Punkt> hangiTegelased() {
         return tegelased;
     }
 
     public void lisaEse(Ese ese) {
-        esemed.put(ese.hangiKoordinaat(), ese);
+        esemed.put(koordinaatArvuks(ese.hangiKoordinaat()), ese);
+    }
+
+    public void kustutaEse(Ese ese) {
+        esemed.remove(koordinaatArvuks(ese.hangiKoordinaat()));
     }
 
     public Ese hangiEse(Koordinaat asukoht) {
-        return (Ese) esemed.get(asukoht);
+        return (Ese) esemed.get(koordinaatArvuks(asukoht));
     }
 
     public Ese hangiEse(int x, int y) {
         return hangiEse(new Koordinaat(x, y));
     }
 
-    public HashMap<Koordinaat, Punkt> hangiEsemed() {
+    public HashMap<Long, Punkt> hangiEsemed() {
         return esemed;
+    }
+
+    public long koordinaatArvuks(Koordinaat koordinaat) {
+        return (long) koordinaat.y * hangiSuurusY() + koordinaat.x;
+    }
+
+    public long koordinaatArvuks(int x, int y) {
+        return (long) y * hangiSuurusY() + x;
     }
 }

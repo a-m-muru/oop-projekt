@@ -13,19 +13,16 @@ public class Ese extends Punkt {
     public Ese(Maailm maailm, int xPos, int yPos) {
         super(maailm, maailm.hangiEsemed(), xPos, yPos);
         maailm.lisaEse(this);
-        this.xPos = xPos;
-        this.yPos = yPos;
-
     }
 
-    public void kontrolliKasKeegiSeisabPeal(Koordinaat olemas) {
+    public void kontrolliKasKeegiSeisabPeal() {
         // vaata maailma tegelaste mapist kas keegi istub sellel koordinaadil
         // kui on siis prindi midagi ja kustuta ese praegu
-        Tegelane tegelane = maailm.hangiTegelane(xPos, yPos);
+        Tegelane tegelane = maailm.hangiTegelane(hangiKoordinaat());
         if (tegelane != null) {
             char esemeSümbol = hangiSymbol();
             System.out.println("Ülesvõetud ese " + esemeSümbol);
-            maailm.hangiEsemed().put(hangiKoordinaat(), null);
+            maailm.kustutaEse(this);
         }
     }
 

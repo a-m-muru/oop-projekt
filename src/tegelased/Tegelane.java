@@ -1,14 +1,20 @@
 package tegelased;
 
 import abi.Koordinaat;
+import maailm.Ese;
 import maailm.Maailm;
 import maailm.Punkt;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Tegelane on maailmas liikuv asi.
  */
 public class Tegelane extends Punkt {
     public int id;
+
+    protected List<Ese> esemed = new ArrayList<>();
 
     public Tegelane(Maailm maailm, int xPos, int yPos) {
         super(maailm, maailm.hangiTegelased(), xPos, yPos);
@@ -26,10 +32,12 @@ public class Tegelane extends Punkt {
 
     @Override
     public void muudaRuuduKohta(boolean pealeKohamuutust) {
-        if (!pealeKohamuutust)
-            viideSalvestuskohale.put(hangiKoordinaat(), null);
-        else
-            viideSalvestuskohale.put(hangiKoordinaat(), this);
+        if (!pealeKohamuutust) {
+            maailm.kustutaTegelane(this);
+        }
+        else {
+            maailm.lisaTegelane(this);
+        }
     }
 
     @Override
