@@ -43,12 +43,14 @@ Tegelased:
 * tegelased, kes liiguvad ringi mängumaailmas ning _takistavad peategelasel tubade läbimist_. Tegelaste tähis on (hetkel) "Ö".
 * _peategelasel on võimalik koguda punkte_
 * ...
+
 Maailm: 
 * Mänguväli, kus tegelane liigub ringi. Koosneb erinevatest tubadest.
 * _Erinevatel tubadel võib olla erinev läbimise raskusaste_. 
 * Maailmal on kindel suurus, millest välja tegelane ei pääse.
 * Tegelane ei pääse välja ka toast kus ta parasjagu asub, kui ta ei ole teinud ära pääsemiseks vajalikku ülesannet
 * ...
+
 _Takistused_:
 * _Takistused on mõeldud selleks, et teha mängu mängimise põnevamaks ja tubade läbimise keerulisemaks._
 * _Takistustega kokkupuutel on võimalik kaotada elusid._
