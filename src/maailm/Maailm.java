@@ -65,7 +65,7 @@ public class Maailm {
         this.mangija = mangija;
         lisaTegelane(mangija);
     }
-
+    
     private void looMaastik(int x, int y) {
         this.maastik = new char[y][x];
         for (int i = 0; i < maastik.length; i++) {
