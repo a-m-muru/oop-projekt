@@ -1,11 +1,9 @@
 package maailm;
 
-import abi.Abi;
 import abi.Koordinaat;
 import tegelased.Mangija;
 import tegelased.Tegelane;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -40,7 +38,7 @@ public class Maailm {
     }
 
     public boolean onMootmetes(int x, int y) {
-        return ! (x < 0 || x >= hangiSuurusX() || y < 0 || y >= hangiSuurusY());
+        return !(x < 0 || x >= hangiSuurusX() || y < 0 || y >= hangiSuurusY());
     }
 
     public int hangiSuurusX() {
@@ -68,6 +66,11 @@ public class Maailm {
         lisaTegelane(mangija);
     }
 
+    public void seaEse(Ese ese) {
+        this.ese = ese;
+        lisaEse(ese);
+    }
+
     private void looMaastik(int x, int y) {
         this.maastik = new char[y][x];
         for (int i = 0; i < maastik.length; i++) {
@@ -83,7 +86,7 @@ public class Maailm {
     }
 
     public Tegelane hangiTegelane(Koordinaat kus) {
-        return (Tegelane)tegelased.get(kus);
+        return (Tegelane) tegelased.get(kus);
     }
 
     public Tegelane hangiTegelane(int x, int y) {
@@ -92,5 +95,21 @@ public class Maailm {
 
     public HashMap<Koordinaat, Punkt> hangiTegelased() {
         return tegelased;
+    }
+
+    public void lisaEse(Ese ese) {
+        esemed.put(ese.hangiKoordinaat(), ese);
+    }
+
+    public Ese hangiEse(Koordinaat asukoht) {
+        return (Ese) esemed.get(asukoht);
+    }
+
+    public Ese hangiEse(int x, int y) {
+        return hangiEse(new Koordinaat(x, y));
+    }
+
+    public HashMap<Koordinaat, Punkt> hangiEsemed() {
+        return esemed;
     }
 }

@@ -1,6 +1,7 @@
 package visuaal;
 
 import abi.Koordinaat;
+import maailm.Ese;
 import maailm.Maailm;
 import maailm.Punkt;
 import tegelased.Tegelane;
@@ -13,6 +14,7 @@ public class Kuvaja {
 
     /**
      * Genereerib maailma pildi, kombineerides sõneks kõik nähtavad ruudud
+     *
      * @param maailm sisendmaailm
      * @return sõne kujul pilt
      */
@@ -37,6 +39,17 @@ public class Kuvaja {
                 continue;
             pilt[pildiY][pildiX] = tegelane.hangiSymbol();
         }
+
+        HashMap<Koordinaat, Punkt> esemed = maailm.hangiEsemed();
+        for (Koordinaat e : esemed.keySet()) {
+            Ese ese = (Ese) esemed.get(e);
+            if (ese == null) continue;
+            int esemeY = ese.hangiKoordinaat().y;
+            int esemeX = ese.hangiKoordinaat().x;
+            pilt[esemeY][esemeX] = ese.hangiSymbol();
+
+        }
+
         return pilt;
     }
 
@@ -61,6 +74,7 @@ public class Kuvaja {
 
     /**
      * Prindib mängu seisu
+     *
      * @param sammudMoodunud mitu sammu on mängus toimunud
      * @param viimaneUuendus mis sammu nr oli viimane uuendus
      */
