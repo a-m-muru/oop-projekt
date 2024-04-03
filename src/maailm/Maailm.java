@@ -16,6 +16,7 @@ public class Maailm {
     private HashMap<Koordinaat, Tegelane> tegelased = new HashMap<>();
     private HashMap<Koordinaat, Ese> esemed = new HashMap<>();
     private Mangija mangija;
+    private Ese ese;
 
     public char[][] hangiMaastik() {
         return maastik;
@@ -67,6 +68,10 @@ public class Maailm {
         this.mangija = mangija;
         lisaTegelane(mangija);
     }
+    public void seaEse(Ese ese){
+        this.ese = ese;
+        lisaEse(ese);
+    }
 
     private void looMaastik(int x, int y) {
         this.maastik = new char[y][x];
@@ -93,4 +98,11 @@ public class Maailm {
     public HashMap<Koordinaat, Tegelane> hangiTegelased() {
         return tegelased;
     }
+
+    public void lisaEse(Ese ese){esemed.put(ese.hangiKoordinaat(), ese);}
+    public Ese hangiese(Koordinaat asukoht){return esemed.get(asukoht);}
+    public Ese  hangiese(int x, int y){
+        return hangiese(new Koordinaat(x, y));
+    }
+    public HashMap<Koordinaat, Ese> hangiEsemed() {return esemed;}
 }
