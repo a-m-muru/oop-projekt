@@ -19,17 +19,18 @@ Käivitada klass Main, soovitatavalt arvuti terminalis (out/production/main-kaus
 
 ## Projekti tegemise protsessi kirjeldus
 ((erinevad etapid ja rühmaliikmete osalemine neis);)
-...
+```
 Projektiga alustasime 13.03.2024, saime kokku ja asusime tööle. Tegime valmis põhiklassid, mõned meetodid ja lahendasime sisendi probleemi- programm ei tahtnud meie sisendist aru saada ja tegelast liigutada ilma, et ta uuesti terve maailma väljastaks.
 Klasside ja meetodite tegemine oli üsna lihtne, kuid sisendi probleemi lahendamine võttis aega.
 20.03.2024 oli meie teine kohtumine, kus Aksel Martin arendas edasi maastikku ja maailma ning Liina tegeles mängu reeglite ja omaduste paikapanemisega.
-27.03.2024 toimus kolmas koostöökohtumine, kus leppisime reaalsusega, et hetkel me mängu tegevust blokeerimata ei saa sisendit lugeda.
-...
+27.03.2024 kohtusime uuesti ja tegelesime ruumidega, tegelaste positsioonidega ja punktisüsteemi genereerimisega. Leppisime reaalsusega, et hetkel me mängu tegevust blokeerimata ei saa sisendit lugeda.
+```
 
 ### Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
 
 ### Tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
-
+tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
+Üks probleemidest, millega puutusime kokku oli non blocking input ehk me ei saanud teha nii, et mäng loeks mängija inputi kohe, ilma enter-klahvi vajutamata.
 
 ### Hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
 
@@ -37,15 +38,18 @@ Klasside ja meetodite tegemine oli üsna lihtne, kuid sisendi probleemi lahendam
 
 ## Mängust:
 (kaldkirjas kirjed on implementeerimata.)
-Tegelased: 
+Tegelased:
 * on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima _erineva raskusastmega_ tube. Peategelase tähis on "@". 
 * tegelased, kes liiguvad ringi mängumaailmas ning _takistavad peategelasel tubade läbimist_. Tegelaste tähis on (hetkel) "Ö".
+* _peategelasel on võimalik koguda punkte_
 * ...
 Maailm: 
 * Mänguväli, kus tegelane liigub ringi. Koosneb erinevatest tubadest.
 * _Erinevatel tubadel võib olla erinev läbimise raskusaste_. 
 * Maailmal on kindel suurus, millest välja tegelane ei pääse.
+* Tegelane ei pääse välja ka toast kus ta parasjagu asub, kui ta ei ole teinud ära pääsemiseks vajalikku ülesannet
 * ...
 _Takistused_:
 * _Takistused on mõeldud selleks, et teha mängu mängimise põnevamaks ja tubade läbimise keerulisemaks._
 * _Takistustega kokkupuutel on võimalik kaotada elusid._
+
