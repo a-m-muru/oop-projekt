@@ -4,6 +4,7 @@ import abi.Koordinaat;
 import maailm.Ese;
 import maailm.Maailm;
 import maailm.Punkt;
+import main.Mang;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,6 @@ import java.util.List;
  * Tegelane on maailmas liikuv asi.
  */
 public class Tegelane extends Punkt {
-    public int id;
-
     protected List<Ese> esemed = new ArrayList<>();
 
     public Tegelane(Maailm maailm, int xPos, int yPos) {
@@ -53,5 +52,10 @@ public class Tegelane extends Punkt {
         }
         super.muudaPos(vorra);
         //System.out.println("uus pos: " + hangiKoordinaat());
+    }
+
+    public void korjaEse(Ese ese) {
+        esemed.add(ese);
+        Mang.lisaSonum("Korjasin üles eseme " + ese.hangiSymbol());
     }
 }

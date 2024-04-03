@@ -1,7 +1,9 @@
 package tegelased;
 
+import maailm.Ese;
 import maailm.Maailm;
 import maailm.Tuba;
+import main.Mang;
 
 /**
  * Mängija kontrollitav tegelane
@@ -9,6 +11,7 @@ import maailm.Tuba;
 public class Mangija extends Tegelane {
 
     private int algustoaSuurus = 16;
+    private int skoor;
 
 
     public Mangija(Maailm maailm, int xPos, int yPos) {
@@ -37,5 +40,12 @@ public class Mangija extends Tegelane {
                 algustoaSuurus
                 );
         tuba.genereeriTuba();
+    }
+
+    @Override
+    public void korjaEse(Ese ese) {
+        super.korjaEse(ese);
+        skoor++;
+        Mang.lisaSonum("Praegune skoor: " + skoor);
     }
 }

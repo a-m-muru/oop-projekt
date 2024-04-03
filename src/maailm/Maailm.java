@@ -117,6 +117,11 @@ public class Maailm {
         return esemed;
     }
 
+    /**
+     * Teisendab Koordinaat-tüüpi objekti väärtused arvuks, et neid oleks võimalik HashMapis võrrelda.
+     * @param koordinaat sisendkoordinaat
+     * @return arv, mis koordinaatidest saadud
+     */
     public long koordinaatArvuks(Koordinaat koordinaat) {
         return (long) koordinaat.y * hangiSuurusY() + koordinaat.x;
     }

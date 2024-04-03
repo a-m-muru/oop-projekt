@@ -1,3 +1,5 @@
+package main;
+
 import abi.Koordinaat;
 import maailm.Ese;
 import maailm.Maailm;
@@ -6,6 +8,8 @@ import tegelased.Mangija;
 import tegelased.Tegelane;
 import visuaal.Kuvaja;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -19,6 +23,7 @@ public class Mang {
     private Tegelane[] joosevad;
     private final Scanner silm = new Scanner(System.in);
     private long algusaeg;
+    private static List<String> sonumid = new ArrayList<>();
 
     /**
      * Seab mängu mängimiseks valmis
@@ -79,7 +84,8 @@ public class Mang {
         if (sisendiga) {
             Kuvaja.kustuta();
             Kuvaja.kuva(maailm);
-            Kuvaja.kuvaSeis(sammudMoodunud, viimaneUuendus);
+            lisaSonum("Möödunud " + (sammudMoodunud - viimaneUuendus) + " sammu\n");
+            Kuvaja.kuvaSeis(sonumid);
             viimaneUuendus = sammudMoodunud;
             String n = silm.nextLine();
             haldaSisendit(n);
@@ -117,5 +123,9 @@ public class Mang {
             case "w" -> maailm.hangiMangija().muudaPos(new Koordinaat(0, -1));
             case "s" -> maailm.hangiMangija().muudaPos(new Koordinaat(0, 1));
         }
+    }
+
+    public static void lisaSonum(String sonum) {
+        sonumid.add(sonum);
     }
 }

@@ -7,6 +7,7 @@ import maailm.Punkt;
 import tegelased.Tegelane;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Kuvaja {
     private static int xAknaSuurus = 60;
@@ -76,10 +77,13 @@ public class Kuvaja {
     /**
      * Prindib mängu seisu
      *
-     * @param sammudMoodunud mitu sammu on mängus toimunud
-     * @param viimaneUuendus mis sammu nr oli viimane uuendus
+     * @param sonumid sõnumid, mida kuvada
      */
-    public static void kuvaSeis(long sammudMoodunud, long viimaneUuendus) {
-        System.out.printf("Möödunud %d sammu\n", sammudMoodunud - viimaneUuendus);
+    public static void kuvaSeis(List<String> sonumid) {
+        for (int i = 0; i < sonumid.size(); i++) {
+            System.out.printf("%s ", sonumid.get(i));
+        }
+        System.out.println();
+        sonumid.clear();
     }
 }

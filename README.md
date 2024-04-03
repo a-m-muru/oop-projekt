@@ -14,29 +14,39 @@ ning mäng alustades loeb need andmed sisse ning valmistab vastavad klasside ise
 ning Liinal kirjutada hulk interpreteeritavaid andmeid (ehk kunstniku rollis justkui).
 
 ## Kasutusjuhend
-Käivitada klass Main, soovitatavalt arvuti terminalis (out/production/main-kaustas jooksutada `java Main`). Mängu sulgemiseks nagu ikka Ctrl+C.
+Käivitada klass main.Main, soovitatavalt arvuti terminalis (out/production/main-kaustas jooksutada `java main/Main`). Mängu sulgemiseks nagu ikka Ctrl+C.
+
 Selleks, et liikuda...
+
 ...paremale tuleb vajutada d ning ENTER
+
 ...vasakule tuleb vajutada a ning ENTER
+
 ...üles tuleb vajutada w ning ENTER
+
 ...alla tuleb vajutada s ning ENTER
 
 ## Klassid
-* Main- peaklass, kust saab mängu käivitada.
-* Mäng- põhiline klass, kus määratakse peategelane, tegelased, algkoordinaadid ning hallatakse sisendit.
+- PACKAGE main, kus sees on
+* Main - peaklass, kust saab mängu käivitada.
+* Mang - põhiline klass, kus määratakse peategelane, tegelased, algkoordinaadid ning hallatakse sisendit.
 
 - PACKAGE maailm, kus sees on klassid:
-* Maailm- klass, mis sisaldab mänguala andmeid, tegelaste positsioonid, tubade positsioonid ja suurused.
-* Tuba- klass, mis genereerib toa mängumaastikule
-* Punkt- klass, milles on positsoiinikoordinaadid maailma ruudustikus ning kuvatavat sümbolit.
-* Ese- klass, mis kirjeldab ülesvõetavat eset ning selle omadusi.
+* Maailm - klass, mis sisaldab mänguala andmeid, tegelaste positsioonid, tubade positsioonid ja suurused.
+* Tuba - klass, mis genereerib toa mängumaastikule
+* Punkt - klass, milles on positsoiinikoordinaadid maailma ruudustikus ning kuvatavat sümbolit.
+* Ese - klass, mis kirjeldab ülesvõetavat eset ning selle omadusi.
 
 - PACKAGE visuaal, kus sees on
-* Kuvaja- klass, mis genereerib maailma pildi ning kuvab seda, uuendab mängu seisu andes teada vahepealset statistikat ning võimaldab taasluua kuvari pärast iga liigutuse tegemist.
+* Kuvaja - klass, mis genereerib maailma pildi ning kuvab seda, uuendab mängu seisu andes teada vahepealset statistikat ning võimaldab taasluua kuvari pärast iga liigutuse tegemist.
 
 - PACKAGE tegelased, kus sees on klassid:
-* Mangija- klass, mis kontrollib peategelast
-* Tegelane- klass, mis kontrollib mängu teisi tegelasi
+* Mangija - klass, mis kontrollib peategelast
+* Tegelane - klass, mis kontrollib mängu teisi tegelasi
+
+- PACKAGE abi, kus on
+- Abi - abimeetodid
+- Koordinaat - kujutab kahemõõtmelist täisarvulist koordinaati
 
 ## Projekti tegemise protsessi kirjeldus
 ```
