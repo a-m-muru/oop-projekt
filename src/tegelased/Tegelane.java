@@ -11,17 +11,25 @@ public class Tegelane extends Punkt {
     public int id;
 
     public Tegelane(Maailm maailm, int xPos, int yPos) {
-        super(maailm, xPos, yPos);
+        super(maailm, maailm.hangiTegelased(), xPos, yPos);
         maailm.lisaTegelane(this);
         this.xPos = xPos;
         this.yPos = yPos;
     }
 
     public Tegelane(Maailm maailm) {
-        super(maailm);
+        super(maailm, maailm.hangiTegelased());
         maailm.lisaTegelane(this);
         this.xPos = 0;
         this.yPos = 0;
+    }
+
+    @Override
+    public void muudaRuuduKohta(boolean pealeKohamuutust) {
+        if (!pealeKohamuutust)
+            viideSalvestuskohale.put(hangiKoordinaat(), null);
+        else
+            viideSalvestuskohale.put(hangiKoordinaat(), this);
     }
 
     @Override

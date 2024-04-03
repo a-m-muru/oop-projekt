@@ -13,8 +13,8 @@ import java.util.HashMap;
  */
 public class Maailm {
     private char[][] maastik;
-    private HashMap<Koordinaat, Tegelane> tegelased = new HashMap<>();
-    private HashMap<Koordinaat, Ese> esemed = new HashMap<>();
+    private HashMap<Koordinaat, Punkt> tegelased = new HashMap<>();
+    private HashMap<Koordinaat, Punkt> esemed = new HashMap<>();
     private Mangija mangija;
 
     public char[][] hangiMaastik() {
@@ -83,14 +83,14 @@ public class Maailm {
     }
 
     public Tegelane hangiTegelane(Koordinaat kus) {
-        return tegelased.get(kus);
+        return (Tegelane)tegelased.get(kus);
     }
 
     public Tegelane hangiTegelane(int x, int y) {
         return hangiTegelane(new Koordinaat(x, y));
     }
 
-    public HashMap<Koordinaat, Tegelane> hangiTegelased() {
+    public HashMap<Koordinaat, Punkt> hangiTegelased() {
         return tegelased;
     }
 }

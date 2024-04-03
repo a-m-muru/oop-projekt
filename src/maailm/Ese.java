@@ -6,7 +6,7 @@ package maailm;
 public class Ese extends Punkt {
 
     public Ese(Maailm maailm, int xPos, int yPos) {
-        super(maailm, xPos, yPos);
+        super(maailm, null, xPos, yPos);
     }
 
     public void kontrolliKasKeegiSeisabPeal() {
@@ -14,4 +14,8 @@ public class Ese extends Punkt {
         // kui on siis prindi midagi ja kustuta ese praegu
     }
 
+    @Override
+    public void muudaRuuduKohta(boolean pealeKohamuutust) {
+
+    }
 }

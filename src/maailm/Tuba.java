@@ -19,7 +19,7 @@ public class Tuba {
         this.ySuurus = ySuurus;
         this.xAlgus = xAlgus;
         this.yAlgus = yAlgus;
-        this.uks = new Koordinaat((Math.random() < 0.5 ? xAlgus : xAlgus + xSuurus), (int)(Math.random() * (ySuurus - 1) + yAlgus));
+        this.uks = new Koordinaat((Math.random() < 0.5 ? xAlgus : xAlgus + xSuurus - 1), (int) (Math.random() * (ySuurus - 1) + yAlgus + 1));
     }
 
     public Tuba(Maailm maailm, int xAlgus, int yAlgus, int xSuurus, int ySuurus, Koordinaat uks) {
@@ -44,12 +44,13 @@ public class Tuba {
             if (i == yAlgus || i == loppY - 1) {
                 System.out.println(i + " " + yAlgus);
                 for (int j = xAlgus; j < loppX - 1; j++) {
-                    if (uks == null || uks.x != j && uks.y != i)
-                        maailm.seaMaastikuKoht(j, i, '#');
+                    maailm.seaMaastikuKoht(j, i, '#');
                 }
             }
             maailm.seaMaastikuKoht(xAlgus, i, '#');
             maailm.seaMaastikuKoht(loppX - 1, i, '#');
         }
+        if (uks != null)
+            maailm.seaMaastikuKoht(uks.x, uks.y, ' ');
     }
 }

@@ -2,6 +2,7 @@ package visuaal;
 
 import abi.Koordinaat;
 import maailm.Maailm;
+import maailm.Punkt;
 import tegelased.Tegelane;
 
 import java.util.HashMap;
@@ -26,9 +27,9 @@ public class Kuvaja {
                         ? ' ' : maailm.hangiMaastikuKoht(pildiX, pildiY);
             }
         }
-        HashMap<Koordinaat, Tegelane> tegelased = maailm.hangiTegelased();
+        HashMap<Koordinaat, Punkt> tegelased = maailm.hangiTegelased();
         for (Koordinaat k : tegelased.keySet()) {
-            Tegelane tegelane = tegelased.get(k);
+            Tegelane tegelane = (Tegelane) tegelased.get(k);
             if (tegelane == null) continue;
             int pildiY = tegelane.hangiKoordinaat().y - maailm.hangiMangija().hangiKoordinaat().y + yAknaSuurus / 2;
             int pildiX = tegelane.hangiKoordinaat().x - maailm.hangiMangija().hangiKoordinaat().x + xAknaSuurus / 2;

@@ -31,6 +31,12 @@ public class Mang {
         int tegelasteArv = 10000;
         joosevad = new Tegelane[tegelasteArv];
         for (int i = 0; i < tegelasteArv; i++) {
+            Koordinaat tegAsukoht = new Koordinaat((int)(Math.random() * maailm.hangiSuurusX()),
+                    (int)(Math.random() * maailm.hangiSuurusY()));
+            if (maailm.hangiMaastikuKoht(tegAsukoht.x, tegAsukoht.y) == '#') {
+                i--;
+                continue;
+            }
             Tegelane tegelane = new Tegelane(
                     maailm,
                     (int)(Math.random() * maailm.hangiSuurusX()),
@@ -53,7 +59,9 @@ public class Mang {
      */
     private void pohiTsykkel(boolean sisendiga) {
         for (Tegelane tegelane : joosevad) {
-            Koordinaat suund = new Koordinaat((int) (Math.random() * 3) - 1, (int) (Math.random() * 3) - 1);
+            int kuhu = (int)(Math.random() * 3) - 1;
+            boolean xVoiY = Math.random() < 0.5;
+            Koordinaat suund = new Koordinaat(xVoiY ? kuhu : 0, !xVoiY ? kuhu : 0);
             tegelane.muudaPos(suund);
         }
         if (sisendiga) {
