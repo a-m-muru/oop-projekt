@@ -28,21 +28,21 @@ public class Mang {
         this.maailm = new Maailm(500, 500);
         Mangija mangija = new Mangija(maailm, 50, 50);
         maailm.seaMangija(mangija);
-     // testimiseks mingid
+        // testimiseks
 
         int tegelasteArv = 10000;
         joosevad = new Tegelane[tegelasteArv];
         for (int i = 0; i < tegelasteArv; i++) {
-            Koordinaat tegAsukoht = new Koordinaat((int)(Math.random() * maailm.hangiSuurusX()),
-                    (int)(Math.random() * maailm.hangiSuurusY()));
+            Koordinaat tegAsukoht = new Koordinaat((int) (Math.random() * maailm.hangiSuurusX()),
+                    (int) (Math.random() * maailm.hangiSuurusY()));
             if (maailm.hangiMaastikuKoht(tegAsukoht.x, tegAsukoht.y) == '#') {
                 i--;
                 continue;
             }
             Tegelane tegelane = new Tegelane(
                     maailm,
-                    (int)(Math.random() * maailm.hangiSuurusX()),
-                    (int)(Math.random() * maailm.hangiSuurusY())
+                    (int) (Math.random() * maailm.hangiSuurusX()),
+                    (int) (Math.random() * maailm.hangiSuurusY())
             );
             tegelane.seaSymbol('Ö');
             joosevad[i] = tegelane;
@@ -53,6 +53,7 @@ public class Mang {
                     50,
                     52
             );
+
             ese.seaSymbol('$');
         }
 
@@ -64,12 +65,13 @@ public class Mang {
 
     /**
      * Mängu põhitsükkel.
+     *
      * @param sisendiga tõeväärtus, kas peaks sisendit kontrollima.
      */
     private void pohiTsykkel(boolean sisendiga) {
         // debug
         for (Tegelane tegelane : joosevad) {
-            int kuhu = (int)(Math.random() * 3) - 1;
+            int kuhu = (int) (Math.random() * 3) - 1;
             boolean xVoiY = Math.random() < 0.5;
             Koordinaat suund = new Koordinaat(xVoiY ? kuhu : 0, !xVoiY ? kuhu : 0);
             tegelane.muudaPos(suund);
@@ -92,6 +94,7 @@ public class Mang {
 
     /**
      * Tegeleb sisendiga.
+     *
      * @param sisend sisend sõne kujul
      */
     private void haldaSisendit(String sisend) {
@@ -104,6 +107,7 @@ public class Mang {
 
     /**
      * Sisenditükkidele vastava tegevuse tegemine
+     *
      * @param n sisend
      */
     private void teeMidagi(String n) {

@@ -16,10 +16,10 @@ ning Liinal kirjutada hulk interpreteeritavaid andmeid (ehk kunstniku rollis jus
 ## Kasutusjuhend
 Käivitada klass Main, soovitatavalt arvuti terminalis (out/production/main-kaustas jooksutada `java Main`). Mängu sulgemiseks nagu ikka Ctrl+C.
 Selleks, et liikuda...
-...paremale vajutada d ning ENTER
-...vasakule vajutada a ning ENTER
-...üles vajutada w ning ENTER
-...alla vajutada s ning ENTER
+...paremale tuleb vajutada d ning ENTER
+...vasakule tuleb vajutada a ning ENTER
+...üles tuleb vajutada w ning ENTER
+...alla tuleb vajutada s ning ENTER
 
 ## Klassid
 * Main- peaklass, kust saab mängu käivitada.
@@ -52,14 +52,28 @@ Mõlema liikme panus tundides on umbes 8h
 
 ### Tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
 Üks probleemidest, millega puutusime kokku oli non blocking input ehk me ei saanud teha nii, et mäng loeks mängija inputi kohe, ilma enter-klahvi vajutamata.
+Teine mure oli sellega, kuidas pärast sammu tegemist/tegelase liigutamist kuvada uuendatud mänguväli
 
 
 ### Hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
 Hästi: 
 * Tegelane liigub seal, kus vaja ning ei liigu seal, kus ta ei pea(sein on takistuseks)
-* Tegelane saab kätte eseme ...
+* Tegelane saab kätte eseme, saab selle eest punkti ja esemed lisatakse ülesvõetud esemete nimekirja
+* Kõrvaltegelased on olemas ning liiguvad sõltumata peategelasest
+* Mäng läheb tööle ning on võimalik saada punkte
+
+Vajab arendamist:
+* Lisada juurde esemeid, mille eest tegelane saab punkte saada
+* Teha teised toad suurema raskusastmega
+* Lisada takistused ning elude arvestus
 
 ### Selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
+
+Proovisime läbi, kas peategelane liigub vastavalt sellele, mis tähte on vajutatud;
+Vaatasime, et peategelane ei pääseks toast välja läbi seina, vaid ainult läbi ukse;
+Kontrollisime, et kõrvaltegelased liiguksid sõltumata peategelasest;
+Kontrollisime, et peategelane saaks võtta üles eseme, see lisataks nimekirja ning selle eest saaks punkti;
+Veendusime, et tegelane liigub vaid siis, kui vajutada õiged nupukombinatsioonid;
 
 
 ## Mängust:
@@ -67,15 +81,15 @@ Hästi:
 Tegelased:
 * on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima _erineva raskusastmega_ tube. Peategelase tähis on "@". 
 * tegelased, kes liiguvad ringi mängumaailmas ning _takistavad peategelasel tubade läbimist_. Tegelaste tähis on (hetkel) "Ö".
-* _peategelasel on võimalik koguda punkte_
-* ...
+* peategelasel on võimalik koguda punkte
+
 
 Maailm: 
 * Mänguväli, kus tegelane liigub ringi. Koosneb erinevatest tubadest.
 * _Erinevatel tubadel võib olla erinev läbimise raskusaste_. 
 * Maailmal on kindel suurus, millest välja tegelane ei pääse.
 * Tegelane ei pääse välja ka toast kus ta parasjagu asub, kui ta ei ole teinud ära pääsemiseks vajalikku ülesannet
-* ...
+
 
 _Takistused_:
 * _Takistused on mõeldud selleks, et teha mängu mängimise põnevamaks ja tubade läbimise keerulisemaks._

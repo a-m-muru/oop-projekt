@@ -61,7 +61,7 @@ public class Kuvaja {
         // töötab linuxis
         System.out.print("\033[H\033[2J");
         System.out.flush();
-        // "töötab" mujal ka
+        // "töötab" mujal ka (nt Windows)
         //System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
@@ -80,6 +80,6 @@ public class Kuvaja {
      * @param viimaneUuendus mis sammu nr oli viimane uuendus
      */
     public static void kuvaSeis(long sammudMoodunud, long viimaneUuendus) {
-        System.out.printf("möödunud %d sammu\n", sammudMoodunud - viimaneUuendus);
+        System.out.printf("Möödunud %d sammu\n", sammudMoodunud - viimaneUuendus);
     }
 }
