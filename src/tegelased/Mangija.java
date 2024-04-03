@@ -3,6 +3,9 @@ package tegelased;
 import maailm.Maailm;
 import maailm.Tuba;
 
+/**
+ * Mängija kontrollitav tegelane
+ */
 public class Mangija extends Tegelane {
 
     private int algustoaSuurus = 16;
@@ -22,6 +25,9 @@ public class Mangija extends Tegelane {
         this.symbol = '@';
     }
 
+    /**
+     * Mängija genereerib ise esimese toa
+     */
     public void looAlgusTuba() {
         Tuba tuba = new Tuba(
                 this.maailm,

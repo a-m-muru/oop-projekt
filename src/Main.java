@@ -1,7 +1,6 @@
-import maailm.Maailm;
-import tegelased.Mangija;
-import visuaal.Kuvaja;
-
+/**
+ * Peaklass
+ */
 public class Main {
     public static void main(String[] args) {
         System.out.println("tere");

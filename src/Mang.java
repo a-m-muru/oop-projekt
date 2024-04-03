@@ -6,6 +6,9 @@ import visuaal.Kuvaja;
 
 import java.util.Scanner;
 
+/**
+ * Põhiline klass, mille kaudu toimub muuhulgas mängija suhtlemine mänguga
+ */
 public class Mang {
     private boolean jookseb = false;
     private long sammudMoodunud;
@@ -15,6 +18,9 @@ public class Mang {
     private final Scanner silm = new Scanner(System.in);
     private long algusaeg;
 
+    /**
+     * Seab mängu mängimiseks valmis
+     */
     public void alusta() {
         algusaeg = System.currentTimeMillis();
         this.maailm = new Maailm(500, 500);
@@ -41,6 +47,10 @@ public class Mang {
         }
     }
 
+    /**
+     * Mängu põhitsükkel.
+     * @param sisendiga tõeväärtus, kas peaks sisendit kontrollima.
+     */
     private void pohiTsykkel(boolean sisendiga) {
         for (Tegelane tegelane : joosevad) {
             Koordinaat suund = new Koordinaat((int) (Math.random() * 3) - 1, (int) (Math.random() * 3) - 1);
@@ -58,6 +68,10 @@ public class Mang {
         sammudMoodunud++;
     }
 
+    /**
+     * Tegeleb sisendiga.
+     * @param sisend sisend sõne kujul
+     */
     private void haldaSisendit(String sisend) {
         String[] kasklused = sisend.split(" ");
         for (String s : kasklused) {
@@ -66,6 +80,10 @@ public class Mang {
         }
     }
 
+    /**
+     * Sisenditükkidele vastava tegevuse tegemine
+     * @param n sisend
+     */
     private void teeMidagi(String n) {
         switch (n) {
             case "d" -> maailm.hangiMangija().muudaPos(new Koordinaat(1, 0));

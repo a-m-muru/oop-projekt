@@ -1,5 +1,8 @@
 package abi;
 
+/**
+ * Salvestab asukohta maailma ruudustikus
+ */
 public class Koordinaat {
     public int x;
     public int y;

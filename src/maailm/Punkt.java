@@ -2,6 +2,9 @@ package maailm;
 
 import abi.Koordinaat;
 
+/**
+ * Alusklass, mis sisaldab positsioonikoordinaate maailma ruudustikus ja kuvatavat sümbolit.
+ */
 public class Punkt {
 
     public Maailm maailm;
@@ -40,6 +43,7 @@ public class Punkt {
     }
 
     public void muudaPos(Koordinaat vorra) {
+        // kasutab "liitmise" konstruktorit
         seaPos(new Koordinaat(hangiKoordinaat(), vorra));
     }
 

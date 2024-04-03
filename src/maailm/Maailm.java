@@ -8,6 +8,9 @@ import tegelased.Tegelane;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * Mänguala, mis hoiab viiteid tegelastele ja punktidele ning sisaldab ruudustikku (maastikku)
+ */
 public class Maailm {
     private char[][] maastik;
     private HashMap<Koordinaat, Tegelane> tegelased = new HashMap<>();

@@ -1,42 +1,51 @@
-Tere:)
+Tere :)
 Oleme Aksel Martin ja Liina.
-Teeme mängu. Sellist, mida saaksime mängida konsoolis, ilma graafilise liideseta.
-Inspiratsiooni saime mängust Rogue, kuhu meie oma mänguga välja jõuame, veel ei tea:)
-Mängu eesmärgiks on ...
-Üldiselt töötab mäng niimodi, et mängija annab sisendi ning vastavalt sellele liigub tegelane mängumaailmas ringi. 
-Nagu igas mängus, ka meil on mõned Easter Egg'id:)
-Kasutusjuhend: 
-Klassid: (iga klassi kohta eraldi selle eesmärk ja olulisemad meetodid;)
--Mang
--Mangija
--Maailm
--Tegelane
--Kuvaja
+Praegu on meil kavas teha konsoolimängu, eeskujuks 1980. aasta mäng Rogue.
+
+## Mängu praegune seis
+Mängija saab sisendina anda tähti w a s d, et mänguväljal liikuda. Seintest läbi minna ei saa. Eksisteerivad teised tegelased, kes hetkel suvaliselt mööda maailma liiguvad (nendega suhelda veel ei saa).
+
+## Põhiline plaan 
+Hetkel on kavas, et Aksel Martinil kirjutada andmete interpretaator
+(so. asjad nagu nt relvad, tegelased, muud on tekstifailidena mingis formaadis kirjas
+ning mäng alustades loeb need andmed sisse ning valmistab vastavad klasside isendid)
+ning Liinal kirjutada hulk interpreteeritavaid andmeid (ehk kunstniku rollis justkui).
+
+## Kasutusjuhend
+Käivitada klass Main, soovitatavalt arvuti terminalis (out/production/main-kaustas jooksutada `java Main`). Mängu sulgemiseks nagu ikka Ctrl+C.
+
+## Klassid
+(iga klassi kohta eraldi selle eesmärk ja olulisemad meetodid on Javadocina klasside sees.)
+
+## Projekti tegemise protsessi kirjeldus
+((erinevad etapid ja rühmaliikmete osalemine neis);)
 ...
-(projekti tegemise protsessi kirjeldus (erinevad etapid ja rühmaliikmete osalemine neis);)
 Projektiga alustasime 13.03.2024, saime kokku ja asusime tööle. Tegime valmis põhiklassid, mõned meetodid ja lahendasime sisendi probleemi- programm ei tahtnud meie sisendist aru saada ja tegelast liigutada ilma, et ta uuesti terve maailma väljastaks.
 Klasside ja meetodite tegemine oli üsna lihtne, kuid sisendi probleemi lahendamine võttis aega.
 20.03.2024 oli meie teine kohtumine, kus Aksel Martin arendas edasi maastikku ja maailma ning Liina tegeles mängu reeglite ja omaduste paikapanemisega.
+27.03.2024 toimus kolmas koostöökohtumine, kus leppisime reaalsusega, et hetkel me mängu tegevust blokeerimata ei saa sisendit lugeda.
 ...
 
-iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
+### Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
 
-tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
+### Tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
 
-hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
 
-selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
+### Hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
 
-MÄNGUST:
+### Selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
+
+## Mängust:
+(kaldkirjas kirjed on implementeerimata.)
 Tegelased: 
-* on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima erineva raskusastmega tube. Peategelase tähis on "@". 
-* tegelased, kes liiguvad ringi mängumaailmas ning takistavad peategelasel tubade läbimist. Tegelaste tähis on "Ö".
+* on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima _erineva raskusastmega_ tube. Peategelase tähis on "@". 
+* tegelased, kes liiguvad ringi mängumaailmas ning _takistavad peategelasel tubade läbimist_. Tegelaste tähis on (hetkel) "Ö".
 * ...
 Maailm: 
 * Mänguväli, kus tegelane liigub ringi. Koosneb erinevatest tubadest.
-* Erinevatel tubadel võib olla erinev läbimise raskusaste. 
+* _Erinevatel tubadel võib olla erinev läbimise raskusaste_. 
 * Maailmal on kindel suurus, millest välja tegelane ei pääse.
 * ...
-Takistused:
-* Takistused on mõeldud selleks, et teha mängu mängimise põnevamaks ja tubade läbimise keerulisemaks.
-* Takistustega kokkupuutel on võimalik kaotada elusid.
+_Takistused_:
+* _Takistused on mõeldud selleks, et teha mängu mängimise põnevamaks ja tubade läbimise keerulisemaks._
+* _Takistustega kokkupuutel on võimalik kaotada elusid._

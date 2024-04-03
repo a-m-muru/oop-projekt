@@ -10,6 +10,11 @@ public class Kuvaja {
     private static int xAknaSuurus = 60;
     private static int yAknaSuurus = 30;
 
+    /**
+     * Genereerib maailma pildi, kombineerides sõneks kõik nähtavad ruudud
+     * @param maailm sisendmaailm
+     * @return sõne kujul pilt
+     */
     private static char[][] hangiPilt(Maailm maailm) {
         char[][] maastik = maailm.hangiMaastik();
         char[][] pilt = new char[yAknaSuurus][xAknaSuurus];
@@ -34,9 +39,14 @@ public class Kuvaja {
         return pilt;
     }
 
+    /**
+     * Tühjendab ekraani
+     */
     public static void kustuta() {
+        // töötab linuxis
         System.out.print("\033[H\033[2J");
         System.out.flush();
+        // "töötab" mujal ka
         //System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 

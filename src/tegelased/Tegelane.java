@@ -4,6 +4,9 @@ import abi.Koordinaat;
 import maailm.Maailm;
 import maailm.Punkt;
 
+/**
+ * Tegelane on maailmas liikuv asi.
+ */
 public class Tegelane extends Punkt {
     public int id;
 

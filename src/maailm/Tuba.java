@@ -1,5 +1,8 @@
 package maailm;
 
+/**
+ * Üks tuba mängu maailma ruudustikus
+ */
 public class Tuba {
     private Maailm maailm;
     private int xAlgus;
@@ -15,6 +18,9 @@ public class Tuba {
         this.yAlgus = yAlgus;
     }
 
+    /**
+     * Genereerib toa vastavalt isendiväljadele
+     */
     public void genereeriTuba() {
         int loppY = Math.min(yAlgus + ySuurus, maailm.hangiSuurusY());
         int loppX = Math.min(xAlgus + xSuurus, maailm.hangiSuurusX());
