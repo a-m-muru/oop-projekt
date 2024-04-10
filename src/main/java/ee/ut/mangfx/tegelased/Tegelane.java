@@ -17,7 +17,6 @@ public class Tegelane extends Punkt {
 
     public Tegelane(Maailm maailm, int xPos, int yPos) {
         super(maailm, maailm.hangiTegelased(), xPos, yPos);
-        maailm.lisaTegelane(this);
         this.xPos = xPos;
         this.yPos = yPos;
     }

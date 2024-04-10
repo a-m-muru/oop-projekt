@@ -7,32 +7,38 @@ import ee.ut.mangfx.maailm.Punkt;
 import ee.ut.mangfx.tegelased.Mangija;
 import ee.ut.mangfx.tegelased.Tegelane;
 import ee.ut.mangfx.visuaal.Kuvaja;
+import javafx.animation.AnimationTimer;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Timer;
 
 /**
  * Põhiline klass, mille kaudu toimub muuhulgas mängija suhtlemine mänguga
  */
-public class Mang {
+public class Mang extends AnimationTimer {
     private boolean jookseb = false;
-    private long sammudMoodunud;
     private long viimaneUuendus;
     private Maailm maailm;
     private Tegelane[] joosevad;
-    private final Scanner silm = new Scanner(System.in);
     private long algusaeg;
+    private Kuvaja kuvaja;
     private static List<String> sonumid = new ArrayList<>();
+    private KeyEvent nupp;
+
 
     /**
      * Seab mängu mängimiseks valmis
      */
-    public void alusta() {
+    public void alusta(Canvas louend) {
         algusaeg = System.currentTimeMillis();
         this.maailm = new Maailm(500, 500);
         Mangija mangija = new Mangija(maailm, 50, 50);
         maailm.seaMangija(mangija);
+        kuvaja = new Kuvaja(louend);
         // testimiseks
 
         int tegelasteArv = 10000;
@@ -40,14 +46,15 @@ public class Mang {
         for (int i = 0; i < tegelasteArv; i++) {
             Koordinaat tegAsukoht = new Koordinaat((int) (Math.random() * maailm.hangiSuurusX()),
                     (int) (Math.random() * maailm.hangiSuurusY()));
-            if (maailm.hangiMaastikuKoht(tegAsukoht.x, tegAsukoht.y) == '#') {
+            if (maailm.hangiMaastikuKoht(tegAsukoht.x, tegAsukoht.y) == '#' ||
+                    maailm.hangiTegelane(tegAsukoht.x, tegAsukoht.y) != null) {
                 i--;
                 continue;
             }
             Tegelane tegelane = new Tegelane(
                     maailm,
-                    (int) (Math.random() * maailm.hangiSuurusX()),
-                    (int) (Math.random() * maailm.hangiSuurusY())
+                    tegAsukoht.x,
+                    tegAsukoht.y
             );
             tegelane.seaSymbol('Ö');
             joosevad[i] = tegelane;
@@ -61,19 +68,13 @@ public class Mang {
 
             ese.seaSymbol('$');
         }
-
-        jookseb = true;
-        while (jookseb) {
-            pohiTsykkel(true);
-        }
+        start();
     }
 
     /**
      * Mängu põhitsükkel.
-     *
-     * @param sisendiga tõeväärtus, kas peaks sisendit kontrollima.
      */
-    private void pohiTsykkel(boolean sisendiga) {
+    private void pohiTsykkel() {
         // debug
         for (Tegelane tegelane : joosevad) {
             int kuhu = (int) (Math.random() * 3) - 1;
@@ -81,51 +82,45 @@ public class Mang {
             Koordinaat suund = new Koordinaat(xVoiY ? kuhu : 0, !xVoiY ? kuhu : 0);
             tegelane.muudaPos(suund);
         }
-        if (sisendiga) {
-            Kuvaja.kustuta();
-            Kuvaja.kuva(maailm);
-            lisaSonum("Möödunud " + (sammudMoodunud - viimaneUuendus) + " sammu\n");
-            Kuvaja.kuvaSeis(sonumid);
-            viimaneUuendus = sammudMoodunud;
-            String n = silm.nextLine();
-            haldaSisendit(n);
-            return;
-        }
         for (Punkt pt : maailm.hangiEsemed().values()) {
             Ese ese = (Ese) pt;
             ese.kontrolliKasKeegiSeisabPeal();
         }
-        sammudMoodunud++;
+        kuvaja.kuva(maailm);
     }
 
-    /**
-     * Tegeleb sisendiga.
-     *
-     * @param sisend sisend sõne kujul
-     */
-    private void haldaSisendit(String sisend) {
-        String[] kasklused = sisend.split(" ");
-        for (String s : kasklused) {
-            teeMidagi(s);
-            pohiTsykkel(false);
+    public void tegevused() {
+        if (nupp == null) return;
+        if (nupp.getCode() == KeyCode.D) {
+            maailm.hangiMangija().muudaPos(new Koordinaat(1, 0));
         }
+        if (nupp.getCode() == KeyCode.A) {
+            maailm.hangiMangija().muudaPos(new Koordinaat(-1, 0));
+        }
+        if (nupp.getCode() == KeyCode.W) {
+            maailm.hangiMangija().muudaPos(new Koordinaat(0, -1));
+        }
+        if (nupp.getCode() == KeyCode.S) {
+            maailm.hangiMangija().muudaPos(new Koordinaat(0, 1));
+        }
+        nupp = null;
     }
 
-    /**
-     * Sisenditükkidele vastava tegevuse tegemine
-     *
-     * @param n sisend
-     */
-    private void teeMidagi(String n) {
-        switch (n) {
-            case "d" -> maailm.hangiMangija().muudaPos(new Koordinaat(1, 0));
-            case "a" -> maailm.hangiMangija().muudaPos(new Koordinaat(-1, 0));
-            case "w" -> maailm.hangiMangija().muudaPos(new Koordinaat(0, -1));
-            case "s" -> maailm.hangiMangija().muudaPos(new Koordinaat(0, 1));
-        }
-    }
 
     public static void lisaSonum(String sonum) {
         sonumid.add(sonum);
+    }
+
+    @Override
+    public void handle(long l) {
+        if (System.nanoTime() - viimaneUuendus > 50000000) {
+            tegevused();
+            pohiTsykkel();
+            viimaneUuendus = System.nanoTime();
+        }
+    }
+
+    public void seaNupp(KeyEvent nupp) {
+        this.nupp = nupp;
     }
 }

@@ -77,6 +77,8 @@ public class Maailm {
     }
 
     public void lisaTegelane(Tegelane tegelane) {
+        if (tegelased.get(koordinaatArvuks(tegelane.hangiKoordinaat())) != null)
+            throw new RuntimeException("tegelast ei saa sinna panna (teine on eees)");
         tegelased.put(koordinaatArvuks(tegelane.hangiKoordinaat()), tegelane);
     }
 

@@ -5,13 +5,23 @@ import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
 import ee.ut.mangfx.maailm.Punkt;
 import ee.ut.mangfx.tegelased.Tegelane;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class Kuvaja {
     private static int xAknaSuurus = 60;
-    private static int yAknaSuurus = 30;
+    private static int yAknaSuurus = 60;
+
+    private Canvas louend;
+
+    public Kuvaja(Canvas louend) {
+        this.louend = louend;
+    }
 
     /**
      * Genereerib maailma pildi, kombineerides sõneks kõik nähtavad ruudud
@@ -66,12 +76,17 @@ public class Kuvaja {
         //System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
-    public static void kuva(Maailm maailm) {
+    public void kuva(Maailm maailm) {
         char[][] pilt = hangiPilt(maailm);
+        GraphicsContext gc = louend.getGraphicsContext2D();
+        gc.setFont(Font.font("Monospaced", 15));
+        gc.setFill(Color.WHITE);
+        gc.fillRect(0, 0, louend.getWidth(), louend.getHeight());
+        gc.setFill(Color.BLACK);
         for (int i = 0; i < pilt.length; i++) {
-            System.out.println(pilt[i]);
+            gc.strokeText(new String(pilt[i]), 8, i * 12 + 8);
+            //gc.fillRect(Math.random() * 100, Math.random() * 100, Math.random() * 200, Math.random() * 50);
         }
-        System.out.println();
     }
 
     /**
