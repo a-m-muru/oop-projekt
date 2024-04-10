@@ -1,8 +1,8 @@
-package maailm;
+package ee.ut.mangfx.maailm;
 
-import abi.Koordinaat;
-import tegelased.Mangija;
-import tegelased.Tegelane;
+import ee.ut.mangfx.abi.Koordinaat;
+import ee.ut.mangfx.tegelased.Mangija;
+import ee.ut.mangfx.tegelased.Tegelane;
 
 import java.util.HashMap;
 

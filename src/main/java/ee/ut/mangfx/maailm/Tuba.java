@@ -1,6 +1,6 @@
-package maailm;
+package ee.ut.mangfx.maailm;
 
-import abi.Koordinaat;
+import ee.ut.mangfx.abi.Koordinaat;
 
 /**
  * Üks tuba mängu maailma ruudustikus

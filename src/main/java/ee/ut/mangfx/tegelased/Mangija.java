@@ -1,9 +1,9 @@
-package tegelased;
+package ee.ut.mangfx.tegelased;
 
-import maailm.Ese;
-import maailm.Maailm;
-import maailm.Tuba;
-import main.Mang;
+import ee.ut.mangfx.maailm.Ese;
+import ee.ut.mangfx.maailm.Maailm;
+import ee.ut.mangfx.maailm.Tuba;
+import ee.ut.mangfx.main.Mang;
 
 /**
  * Mängija kontrollitav tegelane

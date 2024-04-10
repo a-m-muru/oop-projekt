@@ -1,10 +1,10 @@
-package tegelased;
+package ee.ut.mangfx.tegelased;
 
-import abi.Koordinaat;
-import maailm.Ese;
-import maailm.Maailm;
-import maailm.Punkt;
-import main.Mang;
+import ee.ut.mangfx.abi.Koordinaat;
+import ee.ut.mangfx.maailm.Ese;
+import ee.ut.mangfx.maailm.Maailm;
+import ee.ut.mangfx.maailm.Punkt;
+import ee.ut.mangfx.main.Mang;
 
 import java.util.ArrayList;
 import java.util.List;

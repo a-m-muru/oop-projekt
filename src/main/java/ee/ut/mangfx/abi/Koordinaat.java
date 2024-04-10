@@ -1,4 +1,4 @@
-package abi;
+package ee.ut.mangfx.abi;
 
 /**
  * Salvestab asukohta maailma ruudustikus

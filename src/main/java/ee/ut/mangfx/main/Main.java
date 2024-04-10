@@ -1,4 +1,4 @@
-package main;
+package ee.ut.mangfx.main;
 
 /**
  * Peaklass

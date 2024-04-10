@@ -1,12 +1,12 @@
-package main;
+package ee.ut.mangfx.main;
 
-import abi.Koordinaat;
-import maailm.Ese;
-import maailm.Maailm;
-import maailm.Punkt;
-import tegelased.Mangija;
-import tegelased.Tegelane;
-import visuaal.Kuvaja;
+import ee.ut.mangfx.abi.Koordinaat;
+import ee.ut.mangfx.maailm.Ese;
+import ee.ut.mangfx.maailm.Maailm;
+import ee.ut.mangfx.maailm.Punkt;
+import ee.ut.mangfx.tegelased.Mangija;
+import ee.ut.mangfx.tegelased.Tegelane;
+import ee.ut.mangfx.visuaal.Kuvaja;
 
 import java.util.ArrayList;
 import java.util.List;

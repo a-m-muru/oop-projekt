@@ -1,4 +1,4 @@
-package abi;
+package ee.ut.mangfx.abi;
 
 public class Abi {
     public static int lisaJarjendiLoppu(Object[] jarjend, Object asi) {
