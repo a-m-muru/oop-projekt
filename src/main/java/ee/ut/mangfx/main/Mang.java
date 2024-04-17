@@ -38,7 +38,6 @@ public class Mang extends AnimationTimer {
         this.maailm = new Maailm(500, 500);
         Mangija mangija = new Mangija(maailm, 50, 50);
         maailm.seaMangija(mangija);
-        kuvaja = new Kuvaja(louend);
         // testimiseks
 
         int tegelasteArv = 10000;
@@ -106,11 +105,6 @@ public class Mang extends AnimationTimer {
         nupp = null;
     }
 
-
-    public static void lisaSonum(String sonum) {
-        sonumid.add(sonum);
-    }
-
     @Override
     public void handle(long l) {
         if (System.nanoTime() - viimaneUuendus > 50000000) {
@@ -122,5 +116,9 @@ public class Mang extends AnimationTimer {
 
     public void seaNupp(KeyEvent nupp) {
         this.nupp = nupp;
+    }
+
+    public void seaKuvaja(Kuvaja kuvaja) {
+        this.kuvaja = kuvaja;
     }
 }

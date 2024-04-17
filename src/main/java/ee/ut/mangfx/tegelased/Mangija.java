@@ -1,5 +1,6 @@
 package ee.ut.mangfx.tegelased;
 
+import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
 import ee.ut.mangfx.maailm.Tuba;
@@ -10,7 +11,7 @@ import ee.ut.mangfx.main.Mang;
  */
 public class Mangija extends Tegelane {
 
-    private int algustoaSuurus = 16;
+    private int algustoaSuurus = 128;
     private int skoor;
 
 
@@ -34,11 +35,12 @@ public class Mangija extends Tegelane {
     public void looAlgusTuba() {
         Tuba tuba = new Tuba(
                 this.maailm,
-                xPos - algustoaSuurus / 2,
-                yPos - algustoaSuurus / 2,
+                xPos - 30,
+                yPos - 30,
                 algustoaSuurus,
                 algustoaSuurus
                 );
+        tuba.binaaarneRuumipoolitamine();
         tuba.genereeriTuba();
     }
 
@@ -46,6 +48,6 @@ public class Mangija extends Tegelane {
     public void korjaEse(Ese ese) {
         super.korjaEse(ese);
         skoor++;
-        Mang.lisaSonum("Praegune skoor: " + skoor);
+        Sonumid.lisaSonum("Uus skoor on " + skoor);
     }
 }

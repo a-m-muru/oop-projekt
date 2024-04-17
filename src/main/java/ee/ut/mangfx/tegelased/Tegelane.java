@@ -1,6 +1,7 @@
 package ee.ut.mangfx.tegelased;
 
 import ee.ut.mangfx.abi.Koordinaat;
+import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
 import ee.ut.mangfx.maailm.Punkt;
@@ -55,6 +56,6 @@ public class Tegelane extends Punkt {
 
     public void korjaEse(Ese ese) {
         esemed.add(ese);
-        Mang.lisaSonum("Korjasin üles eseme " + ese.hangiSymbol());
+        Sonumid.lisaSonum("Korjasin üles eseme " + ese.hangiSymbol());
     }
 }

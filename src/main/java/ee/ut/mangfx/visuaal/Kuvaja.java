@@ -1,12 +1,14 @@
 package ee.ut.mangfx.visuaal;
 
 import ee.ut.mangfx.abi.Koordinaat;
+import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
 import ee.ut.mangfx.maailm.Punkt;
 import ee.ut.mangfx.tegelased.Tegelane;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -18,9 +20,11 @@ public class Kuvaja {
     private static int yAknaSuurus = 60;
 
     private Canvas louend;
+    private Label sonumisilt;
 
-    public Kuvaja(Canvas louend) {
+    public Kuvaja(Canvas louend, Label sonumisilt) {
         this.louend = louend;
+        this.sonumisilt = sonumisilt;
     }
 
     /**
@@ -80,6 +84,7 @@ public class Kuvaja {
         char[][] pilt = hangiPilt(maailm);
         GraphicsContext gc = louend.getGraphicsContext2D();
         gc.setFont(Font.font("Monospaced", 15));
+        // tühjenda ekraan enne joonistamist
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, louend.getWidth(), louend.getHeight());
         gc.setFill(Color.BLACK);
@@ -87,6 +92,9 @@ public class Kuvaja {
             gc.strokeText(new String(pilt[i]), 8, i * 12 + 8);
             //gc.fillRect(Math.random() * 100, Math.random() * 100, Math.random() * 200, Math.random() * 50);
         }
+        // sonumid
+        sonumisilt.setText(Sonumid.sonumiteSone());
+        Sonumid.eluaeg();
     }
 
     /**
