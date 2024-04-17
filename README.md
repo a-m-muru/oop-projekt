@@ -14,17 +14,17 @@ ning mäng alustades loeb need andmed sisse ning valmistab vastavad klasside ise
 ning Liinal kirjutada hulk interpreteeritavaid andmeid (ehk kunstniku rollis justkui).
 
 ## Kasutusjuhend
-Käivitada klass main.Main, soovitatavalt arvuti terminalis (out/production/main-kaustas jooksutada `java main/Main`). Mängu sulgemiseks nagu ikka Ctrl+C.
+Käivitada klass main.Main, soovitatavalt arvuti terminalis (out/production/main-kaustas jooksutada `java main/Main`). //Mängu sulgemiseks nagu ikka Ctrl+C.(Enam mitte, kuna nüüd on mäng graafilises liideses)
 
 Selleks, et liikuda...
 
-...paremale tuleb vajutada d ning ENTER
+...paremale tuleb vajutada d
 
-...vasakule tuleb vajutada a ning ENTER
+...vasakule tuleb vajutada a
 
-...üles tuleb vajutada w ning ENTER
+...üles tuleb vajutada w
 
-...alla tuleb vajutada s ning ENTER
+...alla tuleb vajutada s
 
 ## Klassid
 - PACKAGE main, kus sees on
