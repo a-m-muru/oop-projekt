@@ -29,11 +29,13 @@ public class Main extends Application {
 
         Mang mang = new Mang();
         Canvas louend = new Canvas(720, 720);
+        Label kuvasilt = new Label();
         Label sonumisilt = new Label();
-        Kuvaja kuvaja = new Kuvaja(louend, sonumisilt);
+        Kuvaja kuvaja = new Kuvaja(louend, sonumisilt, kuvasilt);
         mang.seaKuvaja(kuvaja);
         mang.alusta(louend);
 
+        sonumidJaAsjad.getChildren().add(kuvasilt);
         sonumidJaAsjad.getChildren().add(sonumisilt);
         hkast.getChildren().add(louend);
         hkast.getChildren().add(sonumidJaAsjad);

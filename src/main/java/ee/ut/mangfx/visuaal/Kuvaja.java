@@ -5,6 +5,7 @@ import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
 import ee.ut.mangfx.maailm.Punkt;
+import ee.ut.mangfx.tegelased.Mangija;
 import ee.ut.mangfx.tegelased.Tegelane;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -21,10 +22,12 @@ public class Kuvaja {
 
     private Canvas louend;
     private Label sonumisilt;
+    private Label kuvasilt;
 
-    public Kuvaja(Canvas louend, Label sonumisilt) {
+    public Kuvaja(Canvas louend, Label sonumisilt, Label kuvasilt) {
         this.louend = louend;
         this.sonumisilt = sonumisilt;
+        this.kuvasilt = kuvasilt;
     }
 
     /**
@@ -82,6 +85,7 @@ public class Kuvaja {
 
     public void kuva(Maailm maailm) {
         char[][] pilt = hangiPilt(maailm);
+        Mangija mangija = maailm.hangiMangija();
         GraphicsContext gc = louend.getGraphicsContext2D();
         gc.setFont(Font.font("Monospaced", 15));
         // tühjenda ekraan enne joonistamist
@@ -93,6 +97,11 @@ public class Kuvaja {
             //gc.fillRect(Math.random() * 100, Math.random() * 100, Math.random() * 200, Math.random() * 50);
         }
         // sonumid
+        if (mangija != null) {
+            kuvasilt.setText(
+                    "elud: %d\nskoor: %d".formatted(mangija.hangiElud(), 0)
+            );
+        }
         sonumisilt.setText(Sonumid.sonumiteSone());
         Sonumid.eluaeg();
     }

@@ -47,21 +47,25 @@ Selleks, et liikuda...
 - PACKAGE abi, kus on
 - Abi - abimeetodid
 - Koordinaat - kujutab kahemõõtmelist täisarvulist koordinaati
+- Sonum - hoolitseb selle eest, et sõnumid saaksid kuvatud ning kustuksid teatud aja pärast
+- Sonumid - lisab uued sõnumid ekraanile
 
 ## Projekti tegemise protsessi kirjeldus
 ```
 Projektiga alustasime 13.03.2024, saime kokku ja asusime tööle. Tegime valmis põhiklassid, mõned meetodid ja lahendasime sisendi probleemi- programm ei tahtnud meie sisendist aru saada ja tegelast liigutada ilma, et ta uuesti terve maailma väljastaks.
 Klasside ja meetodite tegemine oli üsna lihtne, kuid sisendi probleemi lahendamine võttis aega.
-20.03.2024 oli meie teine kohtumine, kus Aksel Martin arendas edasi maastikku ja maailma ning Liina tegeles mängu reeglite ja omaduste paikapanemisega.
-27.03.2024 kohtusime uuesti ja tegelesime ruumidega, tegelaste positsioonidega ja punktisüsteemi genereerimisega. Leppisime reaalsusega, et hetkel me mängu tegevust blokeerimata ei saa sisendit lugeda.
-03.04.2024 kohtumisel tegelesime sellega, et toal oleks uks, mille kaudu tegelane saab väljuda toast ning klassiga Ese, et tegelasel oleks võimalik ese mängumaailmast "üles" võtta ja selle eest punkte saada.
+20.03.2024 Aksel Martin arendas edasi maastikku ja maailma ning Liina tegeles mängu reeglite ja omaduste paikapanemisega.
+27.03.2024 Tegelesime ruumidega, tegelaste positsioonidega ja punktisüsteemi genereerimisega. Leppisime reaalsusega, et hetkel me mängu tegevust blokeerimata ei saa sisendit lugeda.
+03.04.2024 Tegelesime sellega, et toal oleks uks, mille kaudu tegelane saab väljuda toast ning klassiga Ese, et tegelasel oleks võimalik ese mängumaailmast "üles" võtta ja selle eest punkte saada.
 
 Projekti 2. etapp
-10.04.2024 kohtumisel paigutasime seni terminalis toimunud tegevuse üle graafilisse keskkonda. Lisaks muutsime sisendit, et see kontrolliks klahvivajutusi. Graafilisse keskkonda üleminekuga lahenes ka meie non-blocking input'i probleem:D
+10.04.2024 Paigutasime seni terminalis toimunud tegevuse üle graafilisse keskkonda. Lisaks muutsime sisendit, et see kontrolliks klahvivajutusi. Graafilisse keskkonda üleminekuga lahenes ka meie non-blocking input'i probleem:D
+17.04.2024 Tegime mängule erinevad toad, mille vahel saab liikuda. Lahendasime oma "uks nurgas" probleemi. Lisaks selleke lisasime mängu kõrvale sõnumid ülesvõetud eseme ja mängu skoori kohta. 
 
 ```
 ### Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
-Mõlema liikme panus tundides on umbes 8h
+Mõlema liikme panus tundides on umbes 8h (1. etapp)
+... (2. etapp)
 
 ### Tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
 Üks probleemidest, millega puutusime kokku oli non blocking input ehk me ei saanud teha nii, et mäng loeks mängija inputi kohe, ilma enter-klahvi vajutamata.

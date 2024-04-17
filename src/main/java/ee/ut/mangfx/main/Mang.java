@@ -90,6 +90,7 @@ public class Mang extends AnimationTimer {
 
     public void tegevused() {
         if (nupp == null) return;
+
         if (nupp.getCode() == KeyCode.D) {
             maailm.hangiMangija().muudaPos(new Koordinaat(1, 0));
         }

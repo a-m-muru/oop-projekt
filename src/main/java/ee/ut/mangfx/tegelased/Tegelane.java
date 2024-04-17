@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class Tegelane extends Punkt {
     protected List<Ese> esemed = new ArrayList<>();
+    protected int elud = 10;
 
     public Tegelane(Maailm maailm, int xPos, int yPos) {
         super(maailm, maailm.hangiTegelased(), xPos, yPos);
@@ -57,5 +58,9 @@ public class Tegelane extends Punkt {
     public void korjaEse(Ese ese) {
         esemed.add(ese);
         Sonumid.lisaSonum("Korjasin üles eseme " + ese.hangiSymbol());
+    }
+
+    public int hangiElud() {
+        return elud;
     }
 }
