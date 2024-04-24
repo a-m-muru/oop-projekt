@@ -11,7 +11,7 @@ import ee.ut.mangfx.main.Mang;
  */
 public class Mangija extends Tegelane {
 
-    private int algustoaSuurus = 128;
+    private int algustoaSuurus = 400;
     private int skoor;
 
 
@@ -19,14 +19,7 @@ public class Mangija extends Tegelane {
         super(maailm, xPos, yPos);
         looAlgusTuba();
         this.symbol = '@';
-    }
-
-    public Mangija(Maailm maailm) {
-        super(maailm);
-        this.xPos = 0;
-        this.yPos = 0;
-        looAlgusTuba();
-        this.symbol = '@';
+        noclip = false;
     }
 
     /**
@@ -40,8 +33,8 @@ public class Mangija extends Tegelane {
                 algustoaSuurus,
                 algustoaSuurus
                 );
-        tuba.binaaarneRuumipoolitamine();
         tuba.genereeriTuba();
+        tuba.binaaarneRuumipoolitamine(32);
     }
 
     @Override

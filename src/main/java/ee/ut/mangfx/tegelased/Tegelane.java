@@ -16,6 +16,7 @@ import java.util.List;
 public class Tegelane extends Punkt {
     protected List<Ese> esemed = new ArrayList<>();
     protected int elud = 10;
+    protected boolean noclip;
 
     public Tegelane(Maailm maailm, int xPos, int yPos) {
         super(maailm, maailm.hangiTegelased(), xPos, yPos);
@@ -44,10 +45,11 @@ public class Tegelane extends Punkt {
         //System.out.println("vana: " + hangiKoordinaat());
         //System.out.println("vorra: " + vorra);
         Koordinaat uus = new Koordinaat(hangiKoordinaat(), vorra);
-        //System.out.println("uus: " + uus);
-        if (maailm.hangiTegelane(uus) != null
-                || !maailm.onMootmetes(uus.x, uus.y)
-                || maailm.hangiMaastikuKoht(uus.x, uus.y) == '#') {
+        // kokkupõrked seintega
+        if (maailm.hangiTegelane(uus) != null)
+            return;
+        if (!noclip && (!maailm.onMootmetes(uus.x, uus.y)
+                || maailm.hangiMaastikuKoht(uus.x, uus.y) == '#')) {
             return;
         }
         super.muudaPos(vorra);

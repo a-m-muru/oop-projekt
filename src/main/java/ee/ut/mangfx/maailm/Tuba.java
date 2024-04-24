@@ -16,6 +16,7 @@ public class Tuba {
     private int xSuurus;
     private int ySuurus;
     private List<Koordinaat> uksed = new ArrayList<>();
+    private char porand = ' ';
 
     public Tuba(Maailm maailm, int xAlgus, int yAlgus, int xSuurus, int ySuurus) {
         this.maailm = maailm;
@@ -28,6 +29,7 @@ public class Tuba {
             uksed.add(null);
         }
         genereeriUksed(uksed);
+        porand = "`'´,".charAt((int) (Math.random() * 4));
     }
 
     /**
@@ -45,6 +47,14 @@ public class Tuba {
             maailm.seaMaastikuKoht(xAlgus, i, '#');
             maailm.seaMaastikuKoht(loppX - 1, i, '#');
         }
+        // põrand
+        if (Math.random() < 0.05)
+            for (int i = yAlgus + 1; i < loppY - 1; i++) {
+                for (int j = xAlgus + 1; j < loppX - 1; j++) {
+                    if (maailm.hangiMaastikuKoht(j, i) != '#')
+                        maailm.seaMaastikuKoht(j, i, porand);
+                }
+            }
 
     }
 
@@ -70,33 +80,35 @@ public class Tuba {
         }
     }
 
-    public void binaaarneRuumipoolitamine() {
-        uksed.addAll(binaarneRuumipoolitamine(Math.random() < 0.5));
+    public void binaaarneRuumipoolitamine(int sygavusLimiit) {
+        uksed.addAll(binaarneRuumipoolitamine(Math.random() < 0.5, 0, sygavusLimiit));
         for (Koordinaat uks : uksed)
             if (uks != null)
                 maailm.seaMaastikuKoht(uks.x, uks.y, '_');
     }
 
-    private List<Koordinaat> binaarneRuumipoolitamine(boolean viimaneOliVertikaalne) {
-        if (xSuurus < 15 || ySuurus < 15)
+    private List<Koordinaat> binaarneRuumipoolitamine(boolean viimaneOliVertikaalne, int sygavus, int sygavLimiit) {
+        if (xSuurus <= 16 || ySuurus <= 16 || sygavus >= sygavLimiit)
             return uksed;
+        int poolituskoht = 0;
         if (viimaneOliVertikaalne) {
-            int poolituskoht = (int) (Math.random() * xSuurus - 4) + 2;
+            poolituskoht = (int) (Math.random() * (xSuurus - 8)) + 4;
             Tuba tuba = new Tuba(maailm, xAlgus, yAlgus, poolituskoht + 1, ySuurus);
             Tuba tuba2 = new Tuba(maailm, xAlgus + poolituskoht, yAlgus, xSuurus - poolituskoht, ySuurus);
-            uksed.addAll(tuba.binaarneRuumipoolitamine(false));
-            uksed.addAll(tuba2.binaarneRuumipoolitamine(false));
             tuba.genereeriTuba();
             tuba2.genereeriTuba();
+            uksed.addAll(tuba.binaarneRuumipoolitamine(false, sygavus + 1, sygavLimiit));
+            uksed.addAll(tuba2.binaarneRuumipoolitamine(false, sygavus + 1, sygavLimiit));
         } else {
-            int poolituskoht = (int) (Math.random() * ySuurus - 4) + 2;
+            poolituskoht = (int) (Math.random() * (ySuurus - 8)) + 4;
             Tuba tuba = new Tuba(maailm, xAlgus, yAlgus, xSuurus, poolituskoht + 1);
             Tuba tuba2 = new Tuba(maailm, xAlgus, yAlgus + poolituskoht, xSuurus, ySuurus - poolituskoht);
-            uksed.addAll(tuba.binaarneRuumipoolitamine(true));
-            uksed.addAll(tuba2.binaarneRuumipoolitamine(true));
             tuba.genereeriTuba();
             tuba2.genereeriTuba();
+            uksed.addAll(tuba.binaarneRuumipoolitamine(true, sygavus + 1, sygavLimiit));
+            uksed.addAll(tuba2.binaarneRuumipoolitamine(true, sygavus + 1, sygavLimiit));
         }
+        System.out.println("vertikaalne: %b, poolituskoht: %d".formatted(!viimaneOliVertikaalne, poolituskoht));
         return uksed;
     }
 }
