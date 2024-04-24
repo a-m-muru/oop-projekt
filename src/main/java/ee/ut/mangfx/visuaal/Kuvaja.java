@@ -99,7 +99,7 @@ public class Kuvaja {
         // sonumid
         if (mangija != null) {
             kuvasilt.setText(
-                    "elud: %d\nskoor: %d".formatted(mangija.hangiElud(), 0)
+                    "elud: %d\nasju: %d".formatted(mangija.hangiElud(), mangija.korjatudEsemed())
             );
         }
         sonumisilt.setText(Sonumid.sonumiteSone());
