@@ -30,6 +30,14 @@ public class Tegelane extends Punkt {
         this.yPos = 0;
     }
 
+    public void muudaElusid(int vorra) {
+        elud += vorra;
+        if (elud <= 0) {
+            Sonumid.lisaSonum("Tegelane " + hangiSymbol() + " suri ära");
+            maailm.kustutaTegelane(this);
+        }
+    }
+
     @Override
     public void muudaRuuduKohta(boolean pealeKohamuutust) {
         if (!pealeKohamuutust) {
@@ -39,18 +47,21 @@ public class Tegelane extends Punkt {
         }
     }
 
+    protected boolean kasVoibSinnaMinna(Koordinaat kuhu) {
+        if (maailm.hangiTegelane(kuhu.x, kuhu.y) != null)
+            return false;
+        return noclip || (maailm.onMootmetes(kuhu.x, kuhu.y)
+                && maailm.hangiMaastikuKoht(kuhu.x, kuhu.y) != '#');
+    }
+
     @Override
     public void muudaPos(Koordinaat vorra) {
         //System.out.println("vana: " + hangiKoordinaat());
         //System.out.println("vorra: " + vorra);
         Koordinaat uus = new Koordinaat(hangiKoordinaat(), vorra);
         // kokkupõrked seintega
-        if (maailm.hangiTegelane(uus) != null)
+        if (!kasVoibSinnaMinna(uus))
             return;
-        if (!noclip && (!maailm.onMootmetes(uus.x, uus.y)
-                || maailm.hangiMaastikuKoht(uus.x, uus.y) == '#')) {
-            return;
-        }
         super.muudaPos(vorra);
         //System.out.println("uus pos: " + hangiKoordinaat());
     }
@@ -70,5 +81,9 @@ public class Tegelane extends Punkt {
 
     public int hangiElud() {
         return elud;
+    }
+
+    public void teeMidagi() {
+
     }
 }

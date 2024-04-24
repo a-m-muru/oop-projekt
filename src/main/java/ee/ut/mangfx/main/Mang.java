@@ -4,6 +4,7 @@ import ee.ut.mangfx.abi.Koordinaat;
 import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
 import ee.ut.mangfx.maailm.Punkt;
+import ee.ut.mangfx.tegelased.Limus;
 import ee.ut.mangfx.tegelased.Mangija;
 import ee.ut.mangfx.tegelased.Tegelane;
 import ee.ut.mangfx.visuaal.Kuvaja;
@@ -23,7 +24,7 @@ public class Mang extends AnimationTimer {
     private boolean jookseb = false;
     private long viimaneUuendus;
     private Maailm maailm;
-    private Tegelane[] joosevad;
+    private List<Tegelane> joosevad = new ArrayList<>();
     private long algusaeg;
     private Kuvaja kuvaja;
     private static List<String> sonumid = new ArrayList<>();
@@ -39,25 +40,8 @@ public class Mang extends AnimationTimer {
         Mangija mangija = new Mangija(maailm, 50, 50);
         maailm.seaMangija(mangija);
         // testimiseks
+        looLimuseid(100);
 
-        int tegelasteArv = 200;
-        joosevad = new Tegelane[tegelasteArv];
-        for (int i = 0; i < tegelasteArv; i++) {
-            Koordinaat tegAsukoht = new Koordinaat((int) (Math.random() * maailm.hangiSuurusX()),
-                    (int) (Math.random() * maailm.hangiSuurusY()));
-            if (maailm.hangiMaastikuKoht(tegAsukoht.x, tegAsukoht.y) == '#' ||
-                    maailm.hangiTegelane(tegAsukoht.x, tegAsukoht.y) != null) {
-                i--;
-                continue;
-            }
-            Tegelane tegelane = new Tegelane(
-                    maailm,
-                    tegAsukoht.x,
-                    tegAsukoht.y
-            );
-            tegelane.seaSymbol('Ö');
-            joosevad[i] = tegelane;
-        }
         start();
     }
 
@@ -67,10 +51,7 @@ public class Mang extends AnimationTimer {
     private void pohiTsykkel() {
         // debug
         for (Tegelane tegelane : joosevad) {
-            int kuhu = (int) (Math.random() * 3) - 1;
-            boolean xVoiY = Math.random() < 0.5;
-            Koordinaat suund = new Koordinaat(xVoiY ? kuhu : 0, !xVoiY ? kuhu : 0);
-            tegelane.muudaPos(suund);
+            tegelane.teeMidagi();
         }
         for (Punkt pt : maailm.hangiEsemed().values()) {
             Ese ese = (Ese) pt;
@@ -112,5 +93,24 @@ public class Mang extends AnimationTimer {
 
     public void seaKuvaja(Kuvaja kuvaja) {
         this.kuvaja = kuvaja;
+    }
+
+    private Koordinaat hangiSuvalineTegelaseAsukoht() {
+        Koordinaat tegAsukoht = new Koordinaat((int) (Math.random() * maailm.hangiSuurusX()),
+                (int) (Math.random() * maailm.hangiSuurusY()));
+        while (maailm.hangiMaastikuKoht(tegAsukoht.x, tegAsukoht.y) == '#' ||
+                maailm.hangiTegelane(tegAsukoht.x, tegAsukoht.y) != null) {
+            tegAsukoht.x = (int) (Math.random() * maailm.hangiSuurusX());
+            tegAsukoht.y = (int) (Math.random() * maailm.hangiSuurusY());
+        }
+        return tegAsukoht;
+    }
+
+    public void looLimuseid(int arv) {
+        for (int i = 0; i < arv; i++) {
+            Koordinaat asukoht = hangiSuvalineTegelaseAsukoht();
+            Limus limus = new Limus(maailm, asukoht.x, asukoht.y);
+            joosevad.add(limus);
+        }
     }
 }
