@@ -12,6 +12,8 @@ public class Limus extends Tegelane {
 
     @Override
     public void teeMidagi() {
+        if (Math.random() < 0.75)
+            return;
         int kuhu = (int) (Math.random() * 3) - 1;
         boolean xVoiY = Math.random() < 0.5;
         Koordinaat suund = new Koordinaat(xVoiY ? kuhu : 0, !xVoiY ? kuhu : 0);
