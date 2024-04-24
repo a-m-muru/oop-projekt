@@ -58,6 +58,9 @@ public class Tegelane extends Punkt {
         esemed.add(ese);
         Sonumid.lisaSonum("Tegelane " + symbol + " korjas üles eseme " + ese.hangiSymbol());
     }
+    public int korjatudEsemed(){
+        return esemed.toArray().length;
+    }
 
     public int hangiElud() {
         return elud;
