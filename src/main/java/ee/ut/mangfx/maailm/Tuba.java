@@ -55,7 +55,13 @@ public class Tuba {
                         maailm.seaMaastikuKoht(j, i, porand);
                 }
             }
-
+        // ese
+        Koordinaat esemeAsukoht = new Koordinaat(
+                (int) (Math.random() * xSuurus) + xAlgus,
+                (int) (Math.random() * ySuurus) + yAlgus
+        );
+        Ese ese = new Ese(maailm, esemeAsukoht.x, esemeAsukoht.y);
+        ese.seaSymbol('$');
     }
 
     private void genereeriUksed(List<Koordinaat> uksed) {
@@ -108,7 +114,6 @@ public class Tuba {
             uksed.addAll(tuba.binaarneRuumipoolitamine(true, sygavus + 1, sygavLimiit));
             uksed.addAll(tuba2.binaarneRuumipoolitamine(true, sygavus + 1, sygavLimiit));
         }
-        System.out.println("vertikaalne: %b, poolituskoht: %d".formatted(!viimaneOliVertikaalne, poolituskoht));
         return uksed;
     }
 }

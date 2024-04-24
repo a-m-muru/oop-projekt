@@ -1,6 +1,5 @@
 package ee.ut.mangfx.visuaal;
 
-import ee.ut.mangfx.abi.Koordinaat;
 import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
@@ -99,7 +98,7 @@ public class Kuvaja {
         // sonumid
         if (mangija != null) {
             kuvasilt.setText(
-                    "elud: %d\nasju: %d".formatted(mangija.hangiElud(), mangija.korjatudEsemed())
+                    "elud: %d\nasjad: %s".formatted(mangija.hangiElud(), mangija.hangiEsemed().toString())
             );
         }
         sonumisilt.setText(Sonumid.sonumiteSone());

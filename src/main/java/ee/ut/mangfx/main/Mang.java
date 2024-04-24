@@ -40,7 +40,7 @@ public class Mang extends AnimationTimer {
         maailm.seaMangija(mangija);
         // testimiseks
 
-        int tegelasteArv = 10000;
+        int tegelasteArv = 200;
         joosevad = new Tegelane[tegelasteArv];
         for (int i = 0; i < tegelasteArv; i++) {
             Koordinaat tegAsukoht = new Koordinaat((int) (Math.random() * maailm.hangiSuurusX()),
@@ -57,15 +57,6 @@ public class Mang extends AnimationTimer {
             );
             tegelane.seaSymbol('Ö');
             joosevad[i] = tegelane;
-        }
-        for (int i = 0; i < 1; i++) {
-            Ese ese = new Ese(
-                    maailm,
-                    50,
-                    52
-            );
-
-            ese.seaSymbol('$');
         }
         start();
     }

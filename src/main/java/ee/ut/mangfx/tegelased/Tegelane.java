@@ -5,7 +5,6 @@ import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
 import ee.ut.mangfx.maailm.Punkt;
-import ee.ut.mangfx.main.Mang;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +59,13 @@ public class Tegelane extends Punkt {
         esemed.add(ese);
         Sonumid.lisaSonum("Tegelane " + symbol + " korjas üles eseme " + ese.hangiSymbol());
     }
-    public int korjatudEsemed(){
+
+    public int korjatudEsemeteArv() {
         return esemed.toArray().length;
+    }
+
+    public List<Ese> hangiEsemed() {
+        return esemed;
     }
 
     public int hangiElud() {

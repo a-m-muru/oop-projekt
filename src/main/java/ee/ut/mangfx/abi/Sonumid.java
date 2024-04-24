@@ -12,10 +12,14 @@ public class Sonumid {
     }
 
     public static void eluaeg() {
+        List<Sonum> eemaldada = new ArrayList<>();
         for (Sonum sonum : sonumid) {
             if (sonum.vahendaAega() <= 0) {
-                sonumid.remove(sonum);
+                eemaldada.add(sonum);
             }
+        }
+        for (Sonum sonum : eemaldada) {
+            sonumid.remove(sonum);
         }
     }
 
