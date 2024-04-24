@@ -22,7 +22,7 @@ public class Ese extends Punkt {
         Tegelane tegelane = maailm.hangiTegelane(hangiKoordinaat());
         if (tegelane != null) {
             char esemeSümbol = hangiSymbol();
-            System.out.println("Viimati hangitud ese " + esemeSümbol);
+            System.out.println("Viimati hangitud ese " + esemeSümbol + " tegelase " + tegelane.symbol + " poolt");
             maailm.kustutaEse(this);
 
             tegelane.korjaEse(this);

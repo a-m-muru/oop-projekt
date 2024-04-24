@@ -33,8 +33,7 @@ public class Tegelane extends Punkt {
     public void muudaRuuduKohta(boolean pealeKohamuutust) {
         if (!pealeKohamuutust) {
             maailm.kustutaTegelane(this);
-        }
-        else {
+        } else {
             maailm.lisaTegelane(this);
         }
     }
@@ -56,6 +55,6 @@ public class Tegelane extends Punkt {
 
     public void korjaEse(Ese ese) {
         esemed.add(ese);
-        Sonumid.lisaSonum("Korjasin üles eseme " + ese.hangiSymbol());
+        Sonumid.lisaSonum("Tegelane " + symbol + " korjas üles eseme " + ese.hangiSymbol());
     }
 }
