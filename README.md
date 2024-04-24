@@ -61,7 +61,7 @@ Klasside ja meetodite tegemine oli üsna lihtne, kuid sisendi probleemi lahendam
 Projekti 2. etapp
 10.04.2024 Paigutasime seni terminalis toimunud tegevuse üle graafilisse keskkonda. Lisaks muutsime sisendit, et see kontrolliks klahvivajutusi. Graafilisse keskkonda üleminekuga lahenes ka meie non-blocking input'i probleem:D
 17.04.2024 Tegime mängule erinevad toad, mille vahel saab liikuda. Lahendasime oma "uks nurgas" probleemi. Lisaks selleke lisasime mängu kõrvale sõnumid ülesvõetud eseme ja mängu skoori kohta. 
-
+24.04.2024 Tegelesime sellega, et toad oleksid ilusamad, sõnumid skoori ja elude kohta ei kaoks ära ning et rünnaku alla sattudes väheneksid tegelaste elud.
 ```
 ### Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
 Mõlema liikme panus tundides on umbes 8h (1. etapp)
@@ -83,6 +83,8 @@ Vajab arendamist:
 * Lisada juurde esemeid, mille eest tegelane saab punkte saada
 * Teha teised toad suurema raskusastmega
 * Lisada takistused ning elude arvestus
+* Kui peategelase elud saavad otsa, mäng lõpeb
+* Esemete list ja esemete kasutamine peategelase kaitsmiseks/ teise tegelase ründamiseks
 
 ### Selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
 
