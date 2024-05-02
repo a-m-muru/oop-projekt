@@ -72,7 +72,7 @@ public class Tegelane extends Punkt {
     }
 
     public int korjatudEsemeteArv() {
-        return esemed.toArray().length;
+        return esemed.size();
     }
 
     public List<Ese> hangiEsemed() {
@@ -85,5 +85,14 @@ public class Tegelane extends Punkt {
 
     public void teeMidagi() {
 
+    }
+
+    public String esemeteNimekiri() {
+        StringBuilder sb = new StringBuilder();
+        for (Ese ese : esemed) {
+            sb.append(ese.hangiSymbol());
+            sb.append('\n');
+        }
+        return sb.toString();
     }
 }

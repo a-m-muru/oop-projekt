@@ -1,10 +1,11 @@
 Tere :)
 Oleme Aksel Martin ja Liina.
-Praegu on meil kavas teha konsoolimängu, eeskujuks 1980. aasta mäng Rogue.
+Kavas teha mäng, mille eeskujuks 1980. aastate konsoolimäng Rogue, et mängu kuvatakse tähemärkide abil.
 
 ## Mängu praegune seis
 Mängija saab sisendina anda tähti w a s d, et mänguväljal liikuda. Seintest läbi minna ei saa. 
-Eksisteerivad teised tegelased, kes hetkel suvaliselt mööda maailma liiguvad (nendega suhelda veel ei saa).
+Eksisteerivad teised tegelased, kes hetkel suvaliselt mööda maailma liiguvad. Neid on võimalik
+rünnata ja nende käest rünnata saada.
 Samuti eksisteerivad esemed, mida saab (teoorias) võtta üles ja (teostus hiljem) selle eest punkte saada.
 
 ## Põhiline plaan 
@@ -14,7 +15,7 @@ ning mäng alustades loeb need andmed sisse ning valmistab vastavad klasside ise
 ning Liinal kirjutada hulk interpreteeritavaid andmeid (ehk kunstniku rollis justkui).
 
 ## Kasutusjuhend
-Käivitada klass main.Main, soovitatavalt arvuti terminalis (out/production/main-kaustas jooksutada `java main/Main`). //Mängu sulgemiseks nagu ikka Ctrl+C.(Enam mitte, kuna nüüd on mäng graafilises liideses)
+Käivitada klass main.Main, soovitatavalt arvuti terminalis (out/production/main-kaustas jooksutada `java main/Main`).
 
 Selleks, et liikuda...
 
@@ -62,6 +63,7 @@ Projekti 2. etapp
 10.04.2024 Paigutasime seni terminalis toimunud tegevuse üle graafilisse keskkonda. Lisaks muutsime sisendit, et see kontrolliks klahvivajutusi. Graafilisse keskkonda üleminekuga lahenes ka meie non-blocking input'i probleem:D
 17.04.2024 Tegime mängule erinevad toad, mille vahel saab liikuda. Lahendasime oma "uks nurgas" probleemi. Lisaks selleke lisasime mängu kõrvale sõnumid ülesvõetud eseme ja mängu skoori kohta. 
 24.04.2024 Tegelesime sellega, et toad oleksid ilusamad, sõnumid skoori ja elude kohta ei kaoks ära ning et rünnaku alla sattudes väheneksid tegelaste elud.
+2.05.2024 Panime nulleludega tegelased päriselt surema. Lisasime kõrgskoori lugemise, mis salvestatakse faili ning kuvatakse mängu alguses. Lisasime nupu üles korjatud esemete kuvamiseks.
 ```
 ### Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
 Mõlema liikme panus tundides on umbes 8h (1. etapp)
@@ -80,11 +82,7 @@ Hästi:
 * Mäng läheb tööle ning on võimalik saada punkte
 
 Vajab arendamist:
-* Lisada juurde esemeid, mille eest tegelane saab punkte saada
-* Teha teised toad suurema raskusastmega
-* Lisada takistused ning elude arvestus
-* Kui peategelase elud saavad otsa, mäng lõpeb
-* Esemete list ja esemete kasutamine peategelase kaitsmiseks/ teise tegelase ründamiseks
+* Esemete kasutamine peategelase kaitsmiseks/ teise tegelase ründamiseks
 
 ### Selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
 
@@ -99,8 +97,8 @@ Veendusime, et tegelane liigub vaid siis, kui vajutada õiged nupukombinatsiooni
 (kaldkirjas kirjed on implementeerimata.)
 Tegelased:
 * on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima _erineva raskusastmega_ tube. Peategelase tähis on "@". 
-* tegelased, kes liiguvad ringi mängumaailmas ning _takistavad peategelasel tubade läbimist_. Tegelaste tähis on (hetkel) "Ö".
-* peategelasel on võimalik koguda punkte
+* tegelased ("limused"), kes liiguvad ringi mängumaailmas ning takistavad peategelasel tubade läbimist.
+* peategelasel on võimalik koguda punkte. Kõrgskoorid salvestatakse faili mängija surres (siis ja ainult siis)
 
 
 Maailm: 

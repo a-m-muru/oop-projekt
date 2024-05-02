@@ -5,7 +5,6 @@ import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
 import ee.ut.mangfx.maailm.Tuba;
-import ee.ut.mangfx.main.Mang;
 
 /**
  * Mängija kontrollitav tegelane
@@ -41,8 +40,7 @@ public class Mangija extends Tegelane {
     @Override
     public void korjaEse(Ese ese) {
         super.korjaEse(ese);
-        skoor++;
-        Sonumid.lisaSonum("Uus skoor on " + skoor);
+        lisaSkoori(1);
     }
 
     @Override
@@ -51,7 +49,19 @@ public class Mangija extends Tegelane {
         if (tegelane != null && tegelane.getClass() != this.getClass()) {
             tegelane.muudaElusid(-1);
             Sonumid.lisaSonum("Mängija ründas tegelast " + tegelane.hangiSymbol());
+            if (tegelane.hangiElud() <= 0) {
+                lisaSkoori(5);
+            }
         }
         return super.kasVoibSinnaMinna(kuhu);
+    }
+
+    public int hangiSkoor() {
+        return skoor;
+    }
+
+    public void lisaSkoori(int kuiPalju) {
+        skoor += kuiPalju;
+        Sonumid.lisaSonum("Uus skoor on " + skoor);
     }
 }

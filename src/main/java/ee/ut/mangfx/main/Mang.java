@@ -1,6 +1,7 @@
 package ee.ut.mangfx.main;
 
 import ee.ut.mangfx.abi.Koordinaat;
+import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
 import ee.ut.mangfx.maailm.Punkt;
@@ -13,6 +14,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -21,6 +23,14 @@ import java.util.Timer;
  * Põhiline klass, mille kaudu toimub muuhulgas mängija suhtlemine mänguga
  */
 public class Mang extends AnimationTimer {
+    public boolean kasJookseb() {
+        return jookseb;
+    }
+
+    public void seaJookseb(boolean jookseb) {
+        this.jookseb = jookseb;
+    }
+
     private boolean jookseb = false;
     private long viimaneUuendus;
     private Maailm maailm;
@@ -41,7 +51,8 @@ public class Mang extends AnimationTimer {
         maailm.seaMangija(mangija);
         // testimiseks
         looLimuseid(100);
-
+        Sonumid.lisaSonum("Senine kõrgeim tulemus on " + korgeimTulemusFailist());
+        jookseb = true;
         start();
     }
 
@@ -51,7 +62,8 @@ public class Mang extends AnimationTimer {
     private void pohiTsykkel() {
         // debug
         for (Tegelane tegelane : joosevad) {
-            tegelane.teeMidagi();
+            if (tegelane.hangiElud() > 0)
+                tegelane.teeMidagi();
         }
         for (Punkt pt : maailm.hangiEsemed().values()) {
             Ese ese = (Ese) pt;
@@ -62,6 +74,12 @@ public class Mang extends AnimationTimer {
 
     public void tegevused() {
         if (nupp == null) return;
+        if (maailm.hangiMangija().hangiElud() <= 0) {
+            if (nupp.getCode() == KeyCode.ENTER) {
+                valjuMangust();
+            }
+            return;
+        }
 
         if (nupp.getCode() == KeyCode.D) {
             maailm.hangiMangija().muudaPos(new Koordinaat(1, 0));
@@ -80,7 +98,7 @@ public class Mang extends AnimationTimer {
 
     @Override
     public void handle(long l) {
-        if (System.nanoTime() - viimaneUuendus > 50000000) {
+        if (System.nanoTime() - viimaneUuendus > 50000000 && jookseb) {
             tegevused();
             pohiTsykkel();
             viimaneUuendus = System.nanoTime();
@@ -112,5 +130,30 @@ public class Mang extends AnimationTimer {
             Limus limus = new Limus(maailm, asukoht.x, asukoht.y);
             joosevad.add(limus);
         }
+    }
+
+    public void valjuMangust() {
+        int korgeimTulemus = korgeimTulemusFailist();
+
+        korgeimTulemus = Math.max(maailm.hangiMangija().hangiSkoor(), korgeimTulemus);
+        try (DataOutputStream dos = new DataOutputStream(new FileOutputStream("tulemused.bin"))) {
+            dos.writeInt(korgeimTulemus);
+        } catch (IOException e) {
+            throw new RuntimeException("Faili salvestamisel läks midagi valesti!", e);
+        }
+        System.exit(0);
+    }
+
+    public int korgeimTulemusFailist() {
+        try (DataInputStream dis = new DataInputStream(new FileInputStream("tulemused.bin"))) {
+            return dis.readInt();
+        } catch (IOException e) {
+            // salvestusfaili pole olemas, ei tee midagi
+        }
+        return 0;
+    }
+
+    public Mangija hangiMangija() {
+        return maailm.hangiMangija();
     }
 }

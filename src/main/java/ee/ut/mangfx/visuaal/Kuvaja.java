@@ -98,7 +98,8 @@ public class Kuvaja {
         // sonumid
         if (mangija != null) {
             kuvasilt.setText(
-                    "elud: %d\nasjad: %s".formatted(mangija.hangiElud(), mangija.hangiEsemed().toString())
+                    "elud: %d\n".formatted(mangija.hangiElud())
+                    + ((mangija.hangiElud() <= 0) ? "\nMäng läbi!\nVajuta nuppu ENTER et uuesti proovida" : "")
             );
         }
         sonumisilt.setText(Sonumid.sonumiteSone());

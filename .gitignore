@@ -44,3 +44,4 @@ bin/
 # jama
 *.class
 */copilot/
+*.bin
