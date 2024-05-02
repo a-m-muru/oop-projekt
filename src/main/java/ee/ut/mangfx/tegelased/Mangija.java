@@ -1,5 +1,6 @@
 package ee.ut.mangfx.tegelased;
 
+import ee.ut.mangfx.abi.Koordinaat;
 import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
@@ -42,5 +43,15 @@ public class Mangija extends Tegelane {
         super.korjaEse(ese);
         skoor++;
         Sonumid.lisaSonum("Uus skoor on " + skoor);
+    }
+
+    @Override
+    protected boolean kasVoibSinnaMinna(Koordinaat kuhu) {
+        Tegelane tegelane = maailm.hangiTegelane(kuhu);
+        if (tegelane != null && tegelane.getClass() != this.getClass()) {
+            tegelane.muudaElusid(-1);
+            Sonumid.lisaSonum("Mängija ründas tegelast " + tegelane.hangiSymbol());
+        }
+        return super.kasVoibSinnaMinna(kuhu);
     }
 }
