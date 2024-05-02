@@ -3,18 +3,21 @@ Oleme Aksel Martin ja Liina.
 Kavas teha mäng, mille eeskujuks 1980. aastate konsoolimäng Rogue, et mängu kuvatakse tähemärkide abil.
 
 ## Mängu praegune seis
+
 Mängija saab sisendina anda tähti w a s d, et mänguväljal liikuda. Seintest läbi minna ei saa.
 Eksisteerivad teised tegelased, kes hetkel suvaliselt mööda maailma liiguvad. Neid on võimalik
 rünnata ja nende käest rünnata saada.
 Samuti eksisteerivad esemed, mida saab võtta üles ja selle eest punkte saada.
 
-## Põhiline plaan 
+## Põhiline plaan
+
 Hetkel on kavas, et Aksel Martinil kirjutada andmete interpretaator
 (so. asjad nagu nt relvad, tegelased, muud on tekstifailidena mingis formaadis kirjas
 ning mäng alustades loeb need andmed sisse ning valmistab vastavad klasside isendid)
 ning Liinal kirjutada hulk interpreteeritavaid andmeid (ehk kunstniku rollis justkui).
 
 ## Kasutusjuhend
+
 Käivitada klass main.Main, soovitatavalt arvuti terminalis (out/production/main-kaustas jooksutada `java main/Main`).
 
 Selleks, et liikuda...
@@ -27,24 +30,30 @@ Selleks, et liikuda...
 
 ...alla tuleb vajutada s
 Kui elud on otsa saanud saab mängust väljuda vajutades ENTER-it.
-Selleks, et näha nimekirja kogutud esemetest saab avada uut akent vajutades nuppu "Esemed". 
+Selleks, et näha nimekirja kogutud esemetest saab avada uut akent vajutades nuppu "Esemed".
 
 ## Klassid
+
 * Main - peaklass, kust saab mängu käivitada.
 
 - PACKAGE main, kus sees on
+
 * Mang - põhiline klass, kus määratakse peategelane, tegelased, algkoordinaadid ning hallatakse sisendit.
 
 - PACKAGE maailm, kus sees on klassid:
+
 * Maailm - klass, mis sisaldab mänguala andmeid, tegelaste positsioonid, tubade positsioonid ja suurused.
 * Tuba - klass, mis genereerib toa mängumaastikule
 * Punkt - klass, milles on positsoiinikoordinaadid maailma ruudustikus ning kuvatavat sümbolit.
 * Ese - klass, mis kirjeldab ülesvõetavat eset ning selle omadusi.
 
 - PACKAGE visuaal, kus sees on
-* Kuvaja - klass, mis genereerib maailma pildi ning kuvab seda, uuendab mängu seisu andes teada vahepealset statistikat ning võimaldab taasluua kuvari pärast iga liigutuse tegemist.
+
+* Kuvaja - klass, mis genereerib maailma pildi ning kuvab seda, uuendab mängu seisu andes teada vahepealset statistikat
+  ning võimaldab taasluua kuvari pärast iga liigutuse tegemist.
 
 - PACKAGE tegelased, kus sees on klassid:
+
 * Mangija - klass, mis kontrollib peategelast
 * Tegelane - klass, mis kontrollib mängu teisi tegelasi
 * Limus - klass, mis loob peategelast ründavaid tegelasi
@@ -56,6 +65,7 @@ Selleks, et näha nimekirja kogutud esemetest saab avada uut akent vajutades nup
 - Sonumid - lisab uued sõnumid ekraanile
 
 ## Projekti tegemise protsessi kirjeldus
+
 ```
 Projektiga alustasime 13.03.2024, saime kokku ja asusime tööle. Tegime valmis põhiklassid, mõned meetodid ja lahendasime sisendi probleemi- programm ei tahtnud meie sisendist aru saada ja tegelast liigutada ilma, et ta uuesti terve maailma väljastaks.
 Klasside ja meetodite tegemine oli üsna lihtne, kuid sisendi probleemi lahendamine võttis aega.
@@ -69,23 +79,30 @@ Projekti 2. etapp
 24.04.2024 Tegelesime sellega, et toad oleksid ilusamad, sõnumid skoori ja elude kohta ei kaoks ära ning et rünnaku alla sattudes väheneksid tegelaste elud.
 2.05.2024 Panime nulleludega tegelased päriselt surema. Lisasime kõrgskoori lugemise, mis salvestatakse faili ning kuvatakse mängu alguses. Lisasime nupu üles korjatud esemete kuvamiseks.
 ```
+
 ### Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
+
 Mõlema liikme panus tundides on umbes 8h (1. etapp)
-... (2. etapp)
+02.05.2024 seisuga umbes 8h. (2. etapp)
+Kahe etapi peale kokku hetkel umbes 16h.
 
 ### Tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
-Üks probleemidest, millega puutusime kokku oli non blocking input ehk me ei saanud teha nii, et mäng loeks mängija inputi kohe, ilma enter-klahvi vajutamata.
+
+Üks probleemidest, millega puutusime kokku oli non blocking input ehk me ei saanud teha nii, et mäng loeks mängija
+inputi kohe, ilma enter-klahvi vajutamata.
 Teine mure oli sellega, kuidas pärast sammu tegemist/tegelase liigutamist kuvada uuendatud mänguväli
 
-
 ### Hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
-Hästi: 
+
+Hästi:
+
 * Tegelane liigub seal, kus vaja ning ei liigu seal, kus ta ei pea(sein on takistuseks)
 * Tegelane saab kätte eseme, saab selle eest punkti ja esemed lisatakse ülesvõetud esemete nimekirja
 * Kõrvaltegelased on olemas ning liiguvad sõltumata peategelasest
 * Mäng läheb tööle ning on võimalik saada punkte
 
 Vajab arendamist:
+
 * Esemete kasutamine peategelase kaitsmiseks/ teise tegelase ründamiseks
 
 ### Selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
@@ -96,23 +113,25 @@ Kontrollisime, et kõrvaltegelased liiguksid sõltumata peategelasest;
 Kontrollisime, et peategelane saaks võtta üles eseme, see lisataks nimekirja ning selle eest saaks punkti;
 Veendusime, et tegelane liigub vaid siis, kui vajutada õiged nupukombinatsioonid;
 
-
 ## Mängust:
+
 (kaldkirjas kirjed on implementeerimata.)
 Tegelased:
-* on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima _erineva raskusastmega_ tube. Peategelase tähis on "@".
+
+* on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima _erineva raskusastmega_ tube. Peategelase tähis
+  on "@".
 * tegelased ("limused"), kes liiguvad ringi mängumaailmas ning takistavad peategelasel tubade läbimist.
 * peategelasel on võimalik koguda punkte. Kõrgskoorid salvestatakse faili mängija surres (siis ja ainult siis)
 
+Maailm:
 
-Maailm: 
 * Mänguväli, kus tegelane liigub ringi. Koosneb erinevatest tubadest.
-* _Erinevatel tubadel võib olla erinev läbimise raskusaste_. 
+* _Erinevatel tubadel võib olla erinev läbimise raskusaste_.
 * Maailmal on kindel suurus, millest välja tegelane ei pääse.
 * Tegelane ei pääse välja ka toast kus ta parasjagu asub, kui ta ei ole teinud ära pääsemiseks vajalikku ülesannet
 
-
 _Takistused_:
+
 * _Takistused on mõeldud selleks, et teha mängu mängimise põnevamaks ja tubade läbimise keerulisemaks._
 * _Takistustega kokkupuutel on võimalik kaotada elusid._
 
