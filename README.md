@@ -3,10 +3,10 @@ Oleme Aksel Martin ja Liina.
 Kavas teha mäng, mille eeskujuks 1980. aastate konsoolimäng Rogue, et mängu kuvatakse tähemärkide abil.
 
 ## Mängu praegune seis
-Mängija saab sisendina anda tähti w a s d, et mänguväljal liikuda. Seintest läbi minna ei saa. 
+Mängija saab sisendina anda tähti w a s d, et mänguväljal liikuda. Seintest läbi minna ei saa.
 Eksisteerivad teised tegelased, kes hetkel suvaliselt mööda maailma liiguvad. Neid on võimalik
 rünnata ja nende käest rünnata saada.
-Samuti eksisteerivad esemed, mida saab (teoorias) võtta üles ja (teostus hiljem) selle eest punkte saada.
+Samuti eksisteerivad esemed, mida saab võtta üles ja selle eest punkte saada.
 
 ## Põhiline plaan 
 Hetkel on kavas, et Aksel Martinil kirjutada andmete interpretaator
@@ -26,10 +26,13 @@ Selleks, et liikuda...
 ...üles tuleb vajutada w
 
 ...alla tuleb vajutada s
+Kui elud on otsa saanud saab mängust väljuda vajutades ENTER-it.
+Selleks, et näha nimekirja kogutud esemetest saab avada uut akent vajutades nuppu "Esemed". 
 
 ## Klassid
-- PACKAGE main, kus sees on
 * Main - peaklass, kust saab mängu käivitada.
+
+- PACKAGE main, kus sees on
 * Mang - põhiline klass, kus määratakse peategelane, tegelased, algkoordinaadid ning hallatakse sisendit.
 
 - PACKAGE maailm, kus sees on klassid:
@@ -44,6 +47,7 @@ Selleks, et liikuda...
 - PACKAGE tegelased, kus sees on klassid:
 * Mangija - klass, mis kontrollib peategelast
 * Tegelane - klass, mis kontrollib mängu teisi tegelasi
+* Limus - klass, mis loob peategelast ründavaid tegelasi
 
 - PACKAGE abi, kus on
 - Abi - abimeetodid
@@ -96,7 +100,7 @@ Veendusime, et tegelane liigub vaid siis, kui vajutada õiged nupukombinatsiooni
 ## Mängust:
 (kaldkirjas kirjed on implementeerimata.)
 Tegelased:
-* on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima _erineva raskusastmega_ tube. Peategelase tähis on "@". 
+* on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima _erineva raskusastmega_ tube. Peategelase tähis on "@".
 * tegelased ("limused"), kes liiguvad ringi mängumaailmas ning takistavad peategelasel tubade läbimist.
 * peategelasel on võimalik koguda punkte. Kõrgskoorid salvestatakse faili mängija surres (siis ja ainult siis)
 
