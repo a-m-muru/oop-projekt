@@ -5,16 +5,13 @@ Kavas teha mäng, mille eeskujuks 1980. aastate konsoolimäng Rogue, et mängu k
 ## Mängu praegune seis
 
 Mängija saab sisendina anda tähti w a s d, et mänguväljal liikuda. Seintest läbi minna ei saa.
-Eksisteerivad teised tegelased, kes hetkel suvaliselt mööda maailma liiguvad. Neid on võimalik
-rünnata ja nende käest rünnata saada.
-Samuti eksisteerivad esemed, mida saab võtta üles ja selle eest punkte saada.
+Eksisteerivad teised tegelased, kes suvaliselt mööda maailma liiguvad. Neid on võimalik
+rünnata ja nende käest rünnata saada. Eksisteerivad esemed, mida saab võtta üles ja selle eest punkte saada.
 
 ## Põhiline plaan
 
-Hetkel on kavas, et Aksel Martinil kirjutada andmete interpretaator
-(so. asjad nagu nt relvad, tegelased, muud on tekstifailidena mingis formaadis kirjas
-ning mäng alustades loeb need andmed sisse ning valmistab vastavad klasside isendid)
-ning Liinal kirjutada hulk interpreteeritavaid andmeid (ehk kunstniku rollis justkui).
+Luua mäng, milles on võimalik saada punkte, kaotada elusid ning läbida tube.
+Salvestada vahepealne tulemus faili nii, et mängu uuesti alustades näev eelmist suurimat tulemust.
 
 ## Kasutusjuhend
 
@@ -22,14 +19,15 @@ Käivitada klass main.Main, soovitatavalt arvuti terminalis (out/production/main
 
 Selleks, et liikuda...
 
-...paremale tuleb vajutada d
+...paremale tuleb vajutada d;
 
-...vasakule tuleb vajutada a
+...vasakule tuleb vajutada a;
 
-...üles tuleb vajutada w
+...üles tuleb vajutada w;
 
-...alla tuleb vajutada s
-Kui elud on otsa saanud saab mängust väljuda vajutades ENTER-it.
+...alla tuleb vajutada s;
+
+Kui elud on otsa saanud saab mängu uuesti alustada vajutades f.
 Selleks, et näha nimekirja kogutud esemetest saab avada uut akent vajutades nuppu "Esemed".
 
 ## Klassid
@@ -46,6 +44,8 @@ Selleks, et näha nimekirja kogutud esemetest saab avada uut akent vajutades nup
 * Tuba - klass, mis genereerib toa mängumaastikule
 * Punkt - klass, milles on positsoiinikoordinaadid maailma ruudustikus ning kuvatavat sümbolit.
 * Ese - klass, mis kirjeldab ülesvõetavat eset ning selle omadusi.
+* Loks - klass, mis kontrollib lõkse 
+* Syda - klass, mis annab juurde elusid
 
 - PACKAGE visuaal, kus sees on
 
@@ -78,19 +78,25 @@ Projekti 2. etapp
 17.04.2024 Tegime mängule erinevad toad, mille vahel saab liikuda. Lahendasime oma "uks nurgas" probleemi. Lisaks selleke lisasime mängu kõrvale sõnumid ülesvõetud eseme ja mängu skoori kohta. 
 24.04.2024 Tegelesime sellega, et toad oleksid ilusamad, sõnumid skoori ja elude kohta ei kaoks ära ning et rünnaku alla sattudes väheneksid tegelaste elud.
 2.05.2024 Panime nulleludega tegelased päriselt surema. Lisasime kõrgskoori lugemise, mis salvestatakse faili ning kuvatakse mängu alguses. Lisasime nupu üles korjatud esemete kuvamiseks.
+09.05.2024 Tegime lõksud, millesse sattudes kaotavad tegelased elusid, südamed, mis annavad elusid juurde
 ```
 
 ### Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
 
-Mõlema liikme panus tundides on umbes 8h (1. etapp)
-02.05.2024 seisuga umbes 8h. (2. etapp)
-Kahe etapi peale kokku hetkel umbes 16h.
+1. etapil mõlema liikme panus umbes 8h.
+2. etapil mõlema liikme panus umbes 10h.
 
 ### Tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
 
-Üks probleemidest, millega puutusime kokku oli non blocking input ehk me ei saanud teha nii, et mäng loeks mängija
-inputi kohe, ilma enter-klahvi vajutamata.
-Teine mure oli sellega, kuidas pärast sammu tegemist/tegelase liigutamist kuvada uuendatud mänguväli
+1. etapp:
+   Üks probleemidest, millega puutusime kokku oli non blocking input ehk me ei saanud teha nii, et mäng loeks mängija
+   inputi kohe, ilma enter-klahvi vajutamata.
+   Teine mure oli sellega, kuidas pärast sammu tegemist/tegelase liigutamist kuvada uuendatud mänguväli
+
+2. etapp:
+   Esemete, peategelase ja kõrvaltegelaste suhtlus, pidime natuke pead murdma selle üle, kuidas teha nii,
+   et kui elud saavad otsa, siis mäng lõpeb mitte ei hakka miinuselusid sisse tooma.
+   Samuti oli natukene peamurdmist sellega, kuidas luua uued toad ja teha seda nii, et need oleksid läbitavad.
 
 ### Hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
 
@@ -100,10 +106,12 @@ Hästi:
 * Tegelane saab kätte eseme, saab selle eest punkti ja esemed lisatakse ülesvõetud esemete nimekirja
 * Kõrvaltegelased on olemas ning liiguvad sõltumata peategelasest
 * Mäng läheb tööle ning on võimalik saada punkte
+* Kõrvaltegelased ründavad peategelast.
+* Elusid on võimalik nii kaotada kui ka juurde saada.
 
 Vajab arendamist:
 
-* Esemete kasutamine peategelase kaitsmiseks/ teise tegelase ründamiseks
+* Graafiline pool, hetkel on kõik väga primitiivne
 
 ### Selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
 
@@ -112,26 +120,33 @@ Vaatasime, et peategelane ei pääseks toast välja läbi seina, vaid ainult lä
 Kontrollisime, et kõrvaltegelased liiguksid sõltumata peategelasest;
 Kontrollisime, et peategelane saaks võtta üles eseme, see lisataks nimekirja ning selle eest saaks punkti;
 Veendusime, et tegelane liigub vaid siis, kui vajutada õiged nupukombinatsioonid;
+Veendusime, et graafiline liides töötab;
+Veendusime, et mängu tulemus salvestatakse faili;
+Veendusime, et kui tegelasel on 0 elu, tema jaoks mäng lõpeb;
+Veendusime, et kui peategelasel on 0 või vähem elu, mäng ei jätku
 
 ## Mängust:
 
 (kaldkirjas kirjed on implementeerimata.)
 Tegelased:
 
-* on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima _erineva raskusastmega_ tube. Peategelase tähis
+* on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima erineva raskusastmega tube. Peategelase tähis
   on "@".
-* tegelased ("limused"), kes liiguvad ringi mängumaailmas ning takistavad peategelasel tubade läbimist.
+* tegelased 'limused', kes liiguvad ringi mängumaailmas ning takistavad peategelasel tubade läbimist.
+* tegelased 'luukered', kes liiguvad teatud intervallide tagant
 * peategelasel on võimalik koguda punkte. Kõrgskoorid salvestatakse faili mängija surres (siis ja ainult siis)
+* peategelasel on võimalik kaotada elusid aga on võimalik neid ka juurde saada.
 
 Maailm:
 
 * Mänguväli, kus tegelane liigub ringi. Koosneb erinevatest tubadest.
-* _Erinevatel tubadel võib olla erinev läbimise raskusaste_.
+* Erinevatel tubadel võib olla erinev läbimise raskusaste.
 * Maailmal on kindel suurus, millest välja tegelane ei pääse.
 * Tegelane ei pääse välja ka toast kus ta parasjagu asub, kui ta ei ole teinud ära pääsemiseks vajalikku ülesannet
 
-_Takistused_:
+Lõksud:
 
-* _Takistused on mõeldud selleks, et teha mängu mängimise põnevamaks ja tubade läbimise keerulisemaks._
-* _Takistustega kokkupuutel on võimalik kaotada elusid._
+* Lõksud on mõeldud selleks, et teha mängu mängimise põnevamaks ja tubade läbimise keerulisemaks.
+* Lõksudega kokkupuutel on võimalik kaotada elusid.
+* Lõksu ei ole algselt näha, see tekib siis, kui tegelane või peategelane jookseb sellele otsa. 
 

@@ -1,6 +1,7 @@
 package ee.ut.mangfx.maailm;
 
 import ee.ut.mangfx.abi.Koordinaat;
+import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.tegelased.Mangija;
 import ee.ut.mangfx.tegelased.Tegelane;
 
