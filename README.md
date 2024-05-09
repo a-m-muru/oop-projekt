@@ -44,8 +44,8 @@ Selleks, et näha nimekirja kogutud esemetest saab avada uut akent vajutades nup
 * Tuba - klass, mis genereerib toa mängumaastikule
 * Punkt - klass, milles on positsoiinikoordinaadid maailma ruudustikus ning kuvatavat sümbolit.
 * Ese - klass, mis kirjeldab ülesvõetavat eset ning selle omadusi.
-* Loks - klass, mis kontrollib lõkse 
-* Syda - klass, mis annab juurde elusid
+* Loks - klass, mis kontrollib lõkse, mis üle kõndinud tegelaste elusid võtavad
+* Syda - esemeklass, mis annab juurde elusid
 
 - PACKAGE visuaal, kus sees on
 
@@ -57,6 +57,8 @@ Selleks, et näha nimekirja kogutud esemetest saab avada uut akent vajutades nup
 * Mangija - klass, mis kontrollib peategelast
 * Tegelane - klass, mis kontrollib mängu teisi tegelasi
 * Limus - klass, mis loob peategelast ründavaid tegelasi
+* Luukere - klass, mis loob peategelast ründavaid tegelasi, kes närviliselt ringi jooksevad
+* Kummitus - klass, mis loob peategelast ründavaid tegelasi, kes seintest läbi liiguvad
 
 - PACKAGE abi, kus on
 - Abi - abimeetodid
@@ -78,7 +80,7 @@ Projekti 2. etapp
 17.04.2024 Tegime mängule erinevad toad, mille vahel saab liikuda. Lahendasime oma "uks nurgas" probleemi. Lisaks selleke lisasime mängu kõrvale sõnumid ülesvõetud eseme ja mängu skoori kohta. 
 24.04.2024 Tegelesime sellega, et toad oleksid ilusamad, sõnumid skoori ja elude kohta ei kaoks ära ning et rünnaku alla sattudes väheneksid tegelaste elud.
 2.05.2024 Panime nulleludega tegelased päriselt surema. Lisasime kõrgskoori lugemise, mis salvestatakse faili ning kuvatakse mängu alguses. Lisasime nupu üles korjatud esemete kuvamiseks.
-09.05.2024 Tegime lõksud, millesse sattudes kaotavad tegelased elusid, südamed, mis annavad elusid juurde
+09.05.2024 Tegime lõksud, millesse sattudes kaotavad tegelased elusid, südamed, mis annavad elusid juurde. Uued vaenlased luukered ja kummitused, veel tegelased enam ei liigu kui nad mängija vaateväljast väljas on.
 ```
 
 ### Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
@@ -134,15 +136,16 @@ Tegelased:
   on "@".
 * tegelased 'limused', kes liiguvad ringi mängumaailmas ning takistavad peategelasel tubade läbimist.
 * tegelased 'luukered', kes liiguvad teatud intervallide tagant
+* tegelased 'kummitused', kes liiguvad teatud intervallide tagant ja seintest läbi
 * peategelasel on võimalik koguda punkte. Kõrgskoorid salvestatakse faili mängija surres (siis ja ainult siis)
 * peategelasel on võimalik kaotada elusid aga on võimalik neid ka juurde saada.
 
 Maailm:
 
 * Mänguväli, kus tegelane liigub ringi. Koosneb erinevatest tubadest.
-* Erinevatel tubadel võib olla erinev läbimise raskusaste.
+* Erinevatel tubadel võib olla erinev läbimise raskusaste (tehniliselt).
 * Maailmal on kindel suurus, millest välja tegelane ei pääse.
-* Tegelane ei pääse välja ka toast kus ta parasjagu asub, kui ta ei ole teinud ära pääsemiseks vajalikku ülesannet
+* _Tegelane ei pääse välja ka toast kus ta parasjagu asub, kui ta ei ole teinud ära pääsemiseks vajalikku ülesannet_
 
 Lõksud:
 
