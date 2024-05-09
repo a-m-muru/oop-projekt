@@ -23,7 +23,7 @@ public class Limus extends Tegelane {
     @Override
     protected boolean kasVoibSinnaMinna(Koordinaat kuhu) {
         Tegelane tegelane = maailm.hangiTegelane(kuhu);
-        if (tegelane != null && tegelane.getClass() != this.getClass()) {
+        if (tegelane != null && !(tegelane instanceof Limus)) {
             tegelane.muudaElusid(-1);
             Sonumid.lisaSonum("Limus ründas tegelast " + tegelane.hangiSymbol());
         }

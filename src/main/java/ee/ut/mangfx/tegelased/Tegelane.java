@@ -2,9 +2,7 @@ package ee.ut.mangfx.tegelased;
 
 import ee.ut.mangfx.abi.Koordinaat;
 import ee.ut.mangfx.abi.Sonumid;
-import ee.ut.mangfx.maailm.Ese;
-import ee.ut.mangfx.maailm.Maailm;
-import ee.ut.mangfx.maailm.Punkt;
+import ee.ut.mangfx.maailm.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +31,6 @@ public class Tegelane extends Punkt {
     public void muudaElusid(int vorra) {
         elud += vorra;
         if (elud <= 0) {
-            Sonumid.lisaSonum("Tegelane " + hangiSymbol() + " suri ära");
             maailm.kustutaTegelane(this);
         }
     }
@@ -44,6 +41,16 @@ public class Tegelane extends Punkt {
             maailm.kustutaTegelane(this);
         } else {
             maailm.lisaTegelane(this);
+            Ese ese = maailm.hangiEse(xPos, yPos);
+            if (ese != null) {
+                korjaEse(ese);
+                maailm.kustutaEse(ese);
+            }
+            Loks loks = maailm.hangiLoks(xPos, yPos);
+            if (loks != null) {
+
+                loks.astusPeale(this);
+            }
         }
     }
 
@@ -68,7 +75,10 @@ public class Tegelane extends Punkt {
 
     public void korjaEse(Ese ese) {
         esemed.add(ese);
-        Sonumid.lisaSonum("Tegelane " + symbol + " korjas üles eseme " + ese.hangiSymbol());
+        if (ese instanceof Syda) {
+            muudaElusid(3);
+            esemed.remove(ese);
+        }
     }
 
     public int korjatudEsemeteArv() {

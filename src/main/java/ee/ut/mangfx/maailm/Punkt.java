@@ -14,6 +14,7 @@ public abstract class Punkt {
     protected int yPos;
     protected char symbol = '?';
     protected HashMap<Long, Punkt> viideSalvestuskohale;
+    protected boolean peidetud;
 
     public Punkt(
             Maailm maailm,
@@ -62,6 +63,18 @@ public abstract class Punkt {
     public void muudaPos(Koordinaat vorra) {
         // kasutab "liitmise" konstruktorit
         seaPos(new Koordinaat(hangiKoordinaat(), vorra));
+    }
+
+    public void peida() {
+        peidetud = true;
+    }
+
+    public void naita() {
+        peidetud = false;
+    }
+
+    public boolean kasPeidetud() {
+        return peidetud;
     }
 
     public Koordinaat hangiKoordinaat() {

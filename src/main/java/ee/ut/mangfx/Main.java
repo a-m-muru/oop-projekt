@@ -39,7 +39,7 @@ public class Main extends Application {
         Button esemedNupp = esemeteNupp(mang);
         Kuvaja kuvaja = new Kuvaja(louend, sonumisilt, kuvasilt);
         mang.seaKuvaja(kuvaja);
-        mang.alusta(louend);
+        mang.alusta();
 
         sonumidJaAsjad.getChildren().add(esemedNupp);
         sonumidJaAsjad.getChildren().add(kuvasilt);

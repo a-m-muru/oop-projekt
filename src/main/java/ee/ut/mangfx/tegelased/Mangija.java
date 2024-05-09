@@ -1,6 +1,7 @@
 package ee.ut.mangfx.tegelased;
 
 import ee.ut.mangfx.abi.Koordinaat;
+import ee.ut.mangfx.abi.Sonum;
 import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.maailm.Ese;
 import ee.ut.mangfx.maailm.Maailm;
@@ -41,6 +42,7 @@ public class Mangija extends Tegelane {
     public void korjaEse(Ese ese) {
         super.korjaEse(ese);
         lisaSkoori(1);
+        Sonumid.lisaSonum("Korjasid üles eseme " + ese.hangiSymbol());
     }
 
     @Override
@@ -51,6 +53,7 @@ public class Mangija extends Tegelane {
             Sonumid.lisaSonum("Mängija ründas tegelast " + tegelane.hangiSymbol());
             if (tegelane.hangiElud() <= 0) {
                 lisaSkoori(5);
+                Sonumid.lisaSonum("Tegelane " + tegelane.hangiSymbol() + " suri sinu rünnaku tagajärjel.");
             }
         }
         return super.kasVoibSinnaMinna(kuhu);
@@ -64,4 +67,6 @@ public class Mangija extends Tegelane {
         skoor += kuiPalju;
         Sonumid.lisaSonum("Uus skoor on " + skoor);
     }
+
+
 }

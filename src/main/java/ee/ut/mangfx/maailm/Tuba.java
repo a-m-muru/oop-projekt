@@ -62,6 +62,27 @@ public class Tuba {
         );
         Ese ese = new Ese(maailm, esemeAsukoht.x, esemeAsukoht.y);
         ese.seaSymbol('$');
+        if (Math.random() < 0.1)
+            ese.seaSymbol('€');
+        if (Math.random() < 0.1)
+            ese.seaSymbol('£');
+        if (Math.random() < 0.2) {
+            esemeAsukoht = new Koordinaat(
+                    (int) (Math.random() * xSuurus) + xAlgus,
+                    (int) (Math.random() * ySuurus) + yAlgus);
+            Syda syda = new Syda(maailm, esemeAsukoht.x, esemeAsukoht.y);
+        }
+        // lõksud
+        for (int i = 0; i < (int) (Math.random() * 50) - 3; i++) {
+            Koordinaat loksuAsukoht = new Koordinaat((int) (Math.random() * xSuurus) + xAlgus,
+                    (int) (Math.random() * ySuurus) + yAlgus);
+            Loks loks = new Loks(
+                    maailm, maailm.hangiLoksud(),
+                    loksuAsukoht.x, loksuAsukoht.y,
+                    '^',
+                    (int) (Math.random() * 5) + 1);
+            maailm.lisaLoks(loks);
+        }
     }
 
     private void genereeriUksed(List<Koordinaat> uksed) {

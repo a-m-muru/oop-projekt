@@ -16,19 +16,6 @@ public class Ese extends Punkt {
         maailm.lisaEse(this);
     }
 
-    public void kontrolliKasKeegiSeisabPeal() {
-        // vaata maailma tegelaste mapist kas keegi istub sellel koordinaadil
-        // kui on siis prindi midagi ja kustuta ese praegu
-        Tegelane tegelane = maailm.hangiTegelane(hangiKoordinaat());
-        if (tegelane != null) {
-            char esemeSümbol = hangiSymbol();
-            System.out.println("Viimati hangitud ese " + esemeSümbol + " tegelase " + tegelane.symbol + " poolt");
-            maailm.kustutaEse(this);
-
-            tegelane.korjaEse(this);
-        }
-    }
-
     @Override
     public void muudaRuuduKohta(boolean pealeKohamuutust) {
 

@@ -13,6 +13,7 @@ public class Maailm {
     private char[][] maastik;
     private HashMap<Long, Punkt> tegelased = new HashMap<>();
     private HashMap<Long, Punkt> esemed = new HashMap<>();
+    private HashMap<Long, Punkt> loksud = new HashMap<>();
     private Mangija mangija;
 
     public char[][] hangiMaastik() {
@@ -65,7 +66,7 @@ public class Maailm {
         this.mangija = mangija;
         lisaTegelane(mangija);
     }
-    
+
     private void looMaastik(int x, int y) {
         this.maastik = new char[y][x];
         for (int i = 0; i < maastik.length; i++) {
@@ -115,12 +116,29 @@ public class Maailm {
         return hangiEse(new Koordinaat(x, y));
     }
 
+    public void lisaLoks(Loks loks) {
+        loksud.put(koordinaatArvuks(loks.xPos, loks.yPos), loks);
+    }
+
+    public Loks hangiLoks(Koordinaat asukoht) {
+        return (Loks) loksud.get(koordinaatArvuks(asukoht));
+    }
+
+    public Loks hangiLoks(int x, int y) {
+        return hangiLoks(new Koordinaat(x, y));
+    }
+
     public HashMap<Long, Punkt> hangiEsemed() {
         return esemed;
     }
 
+    public HashMap<Long, Punkt> hangiLoksud() {
+        return loksud;
+    }
+
     /**
      * Teisendab Koordinaat-tüüpi objekti väärtused arvuks, et neid oleks võimalik HashMapis võrrelda.
+     *
      * @param koordinaat sisendkoordinaat
      * @return arv, mis koordinaatidest saadud
      */

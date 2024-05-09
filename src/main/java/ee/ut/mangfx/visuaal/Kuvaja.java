@@ -2,6 +2,7 @@ package ee.ut.mangfx.visuaal;
 
 import ee.ut.mangfx.abi.Sonumid;
 import ee.ut.mangfx.maailm.Ese;
+import ee.ut.mangfx.maailm.Loks;
 import ee.ut.mangfx.maailm.Maailm;
 import ee.ut.mangfx.maailm.Punkt;
 import ee.ut.mangfx.tegelased.Mangija;
@@ -16,8 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Kuvaja {
-    private static int xAknaSuurus = 60;
-    private static int yAknaSuurus = 60;
+    public static final int X_AKNA_SUURUS = 60;
+    public static final int Y_AKNA_SUURUS = 60;
 
     private Canvas louend;
     private Label sonumisilt;
@@ -37,11 +38,11 @@ public class Kuvaja {
      */
     private static char[][] hangiPilt(Maailm maailm) {
         char[][] maastik = maailm.hangiMaastik();
-        char[][] pilt = new char[yAknaSuurus][xAknaSuurus];
-        for (int y = 0; y < yAknaSuurus; y++) {
-            for (int x = 0; x < xAknaSuurus; x++) {
-                int pildiY = y + maailm.hangiMangija().hangiKoordinaat().y - yAknaSuurus / 2;
-                int pildiX = x + maailm.hangiMangija().hangiKoordinaat().x - xAknaSuurus / 2;
+        char[][] pilt = new char[Y_AKNA_SUURUS][X_AKNA_SUURUS];
+        for (int y = 0; y < Y_AKNA_SUURUS; y++) {
+            for (int x = 0; x < X_AKNA_SUURUS; x++) {
+                int pildiY = y + maailm.hangiMangija().hangiKoordinaat().y - Y_AKNA_SUURUS / 2;
+                int pildiX = x + maailm.hangiMangija().hangiKoordinaat().x - X_AKNA_SUURUS / 2;
                 pilt[y][x] = (maailm.hangiMaastikuKohtVoiNull(pildiX, pildiY) == Character.MIN_VALUE)
                         ? ' ' : maailm.hangiMaastikuKoht(pildiX, pildiY);
             }
@@ -49,10 +50,10 @@ public class Kuvaja {
         HashMap<Long, Punkt> tegelased = maailm.hangiTegelased();
         for (Punkt p : tegelased.values()) {
             Tegelane tegelane = (Tegelane) p;
-            if (tegelane == null) continue;
-            int pildiY = tegelane.hangiKoordinaat().y - maailm.hangiMangija().hangiKoordinaat().y + yAknaSuurus / 2;
-            int pildiX = tegelane.hangiKoordinaat().x - maailm.hangiMangija().hangiKoordinaat().x + xAknaSuurus / 2;
-            if (pildiX >= xAknaSuurus || pildiY >= yAknaSuurus || pildiX < 0 || pildiY < 0)
+            if (tegelane == null || tegelane.kasPeidetud()) continue;
+            int pildiY = tegelane.hangiKoordinaat().y - maailm.hangiMangija().hangiKoordinaat().y + Y_AKNA_SUURUS / 2;
+            int pildiX = tegelane.hangiKoordinaat().x - maailm.hangiMangija().hangiKoordinaat().x + X_AKNA_SUURUS / 2;
+            if (pildiX >= X_AKNA_SUURUS || pildiY >= Y_AKNA_SUURUS || pildiX < 0 || pildiY < 0)
                 continue;
             pilt[pildiY][pildiX] = tegelane.hangiSymbol();
         }
@@ -60,13 +61,24 @@ public class Kuvaja {
         HashMap<Long, Punkt> esemed = maailm.hangiEsemed();
         for (Punkt k : esemed.values()) {
             Ese ese = (Ese) k;
-            if (ese == null) continue;
-            int pildiY = ese.hangiKoordinaat().y - maailm.hangiMangija().hangiKoordinaat().y + yAknaSuurus / 2;
-            int pildiX = ese.hangiKoordinaat().x - maailm.hangiMangija().hangiKoordinaat().x + xAknaSuurus / 2;
-            if (pildiX >= xAknaSuurus || pildiY >= yAknaSuurus || pildiX < 0 || pildiY < 0)
+            if (ese == null || ese.kasPeidetud()) continue;
+            int pildiY = ese.hangiKoordinaat().y - maailm.hangiMangija().hangiKoordinaat().y + Y_AKNA_SUURUS / 2;
+            int pildiX = ese.hangiKoordinaat().x - maailm.hangiMangija().hangiKoordinaat().x + X_AKNA_SUURUS / 2;
+            if (pildiX >= X_AKNA_SUURUS || pildiY >= Y_AKNA_SUURUS || pildiX < 0 || pildiY < 0)
                 continue;
             pilt[pildiY][pildiX] = ese.hangiSymbol();
         }
+        HashMap<Long, Punkt> loksud = maailm.hangiLoksud();
+        for (Punkt k : loksud.values()) {
+            Loks loks = (Loks) k;
+            if (loks == null || loks.kasPeidetud()) continue;
+            int pildiY = loks.hangiKoordinaat().y - maailm.hangiMangija().hangiKoordinaat().y + Y_AKNA_SUURUS / 2;
+            int pildiX = loks.hangiKoordinaat().x - maailm.hangiMangija().hangiKoordinaat().x + X_AKNA_SUURUS / 2;
+            if (pildiX >= X_AKNA_SUURUS || pildiY >= Y_AKNA_SUURUS || pildiX < 0 || pildiY < 0)
+                continue;
+            pilt[pildiY][pildiX] = loks.hangiSymbol();
+        }
+        
 
         return pilt;
     }
@@ -99,7 +111,7 @@ public class Kuvaja {
         if (mangija != null) {
             kuvasilt.setText(
                     "elud: %d\n".formatted(mangija.hangiElud())
-                    + ((mangija.hangiElud() <= 0) ? "\nMäng läbi!\nVajuta nuppu ENTER et uuesti proovida" : "")
+                    + ((mangija.hangiElud() <= 0) ? "\nMäng läbi!\nVajuta nuppu F et uuesti proovida" : "")
             );
         }
         sonumisilt.setText(Sonumid.sonumiteSone());

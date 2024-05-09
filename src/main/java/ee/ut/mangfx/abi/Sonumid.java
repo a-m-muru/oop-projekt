@@ -32,4 +32,7 @@ public class Sonumid {
         return ss.toString();
     }
 
+    public static void kustutaSonumid() {
+        sonumid.clear();
+    }
 }
