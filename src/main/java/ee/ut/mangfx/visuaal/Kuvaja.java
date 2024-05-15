@@ -11,8 +11,10 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,15 +38,19 @@ public class Kuvaja {
      * @param maailm sisendmaailm
      * @return sõne kujul pilt
      */
-    private static char[][] hangiPilt(Maailm maailm) {
+    private static PildiVarviPaar hangiPilt(Maailm maailm) {
         char[][] maastik = maailm.hangiMaastik();
         char[][] pilt = new char[Y_AKNA_SUURUS][X_AKNA_SUURUS];
+        int[][] varvid = new int[Y_AKNA_SUURUS][X_AKNA_SUURUS];
         for (int y = 0; y < Y_AKNA_SUURUS; y++) {
             for (int x = 0; x < X_AKNA_SUURUS; x++) {
                 int pildiY = y + maailm.hangiMangija().hangiKoordinaat().y - Y_AKNA_SUURUS / 2;
                 int pildiX = x + maailm.hangiMangija().hangiKoordinaat().x - X_AKNA_SUURUS / 2;
-                pilt[y][x] = (maailm.hangiMaastikuKohtVoiNull(pildiX, pildiY) == Character.MIN_VALUE)
+                char osa = (maailm.hangiMaastikuKohtVoiNull(pildiX, pildiY) == Character.MIN_VALUE)
                         ? ' ' : maailm.hangiMaastikuKoht(pildiX, pildiY);
+                pilt[y][x] = osa;
+                if (osa == '#')
+                    varvid[y][x] = 0x000044;
             }
         }
         HashMap<Long, Punkt> tegelased = maailm.hangiTegelased();
@@ -56,6 +62,7 @@ public class Kuvaja {
             if (pildiX >= X_AKNA_SUURUS || pildiY >= Y_AKNA_SUURUS || pildiX < 0 || pildiY < 0)
                 continue;
             pilt[pildiY][pildiX] = tegelane.hangiSymbol();
+            varvid[pildiY][pildiX] = p.hangiVarv();
         }
 
         HashMap<Long, Punkt> esemed = maailm.hangiEsemed();
@@ -67,6 +74,7 @@ public class Kuvaja {
             if (pildiX >= X_AKNA_SUURUS || pildiY >= Y_AKNA_SUURUS || pildiX < 0 || pildiY < 0)
                 continue;
             pilt[pildiY][pildiX] = ese.hangiSymbol();
+            varvid[pildiY][pildiX] = k.hangiVarv();
         }
         HashMap<Long, Punkt> loksud = maailm.hangiLoksud();
         for (Punkt k : loksud.values()) {
@@ -77,40 +85,43 @@ public class Kuvaja {
             if (pildiX >= X_AKNA_SUURUS || pildiY >= Y_AKNA_SUURUS || pildiX < 0 || pildiY < 0)
                 continue;
             pilt[pildiY][pildiX] = loks.hangiSymbol();
+            varvid[pildiY][pildiX] = loks.hangiVarv();
         }
-        
-
-        return pilt;
+        return new PildiVarviPaar(pilt, varvid);
     }
 
-    /**
-     * Tühjendab ekraani
-     */
-    public static void kustuta() {
-        // töötab linuxis
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-        // "töötab" mujal ka (nt Windows)
-        //System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    public Color varvArvust(int varv) {
+        //https://stackoverflow.com/a/39613661
+        int blue = varv & 0xFF;
+        int green = (varv >> 8) & 0xFF;
+        int red = (varv >> 16) & 0xFF;
+        // jagame 256ga
+        return Color.color(red * 0.00390625, green * 0.00390625, blue * 0.00390625);
     }
 
     public void kuva(Maailm maailm) {
-        char[][] pilt = hangiPilt(maailm);
+        PildiVarviPaar paar = hangiPilt(maailm);
+        char[][] pilt = paar.pilt;
+        int[][] varvid = paar.varvid;
         Mangija mangija = maailm.hangiMangija();
         GraphicsContext gc = louend.getGraphicsContext2D();
         gc.setFont(Font.font("Monospaced", 15));
         // tühjenda ekraan enne joonistamist
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, louend.getWidth(), louend.getHeight());
-        gc.setFill(Color.BLACK);
         for (int i = 0; i < pilt.length; i++) {
-            gc.strokeText(new String(pilt[i]), 8, i * 12 + 8);
+            //gc.strokeText(new String(pilt[i]), 8, i * 12 + 8);
+            for (int j = 0; j < pilt[i].length; j++) {
+                Color varv = varvArvust(varvid[i][j]);
+                gc.setStroke(varv);
+                gc.strokeText(Character.toString(pilt[i][j]), j * 12 + 4, i * 12 + 8);
+            }
             //gc.fillRect(Math.random() * 100, Math.random() * 100, Math.random() * 200, Math.random() * 50);
         }
         // sonumid
         if (mangija != null) {
             kuvasilt.setText(
-                    "elud: %d\n".formatted(mangija.hangiElud())
+                    "elud: " + "❤".repeat(mangija.hangiElud())
                     + ((mangija.hangiElud() <= 0) ? "\nMäng läbi!\nVajuta nuppu F et uuesti proovida" : "")
             );
         }
@@ -129,5 +140,15 @@ public class Kuvaja {
         }
         System.out.println();
         sonumid.clear();
+    }
+
+    private static class PildiVarviPaar {
+        public char[][] pilt;
+        public int[][] varvid;
+
+        public PildiVarviPaar(char[][] pilt, int[][] varvid) {
+            this.pilt = pilt;
+            this.varvid = varvid;
+        }
     }
 }

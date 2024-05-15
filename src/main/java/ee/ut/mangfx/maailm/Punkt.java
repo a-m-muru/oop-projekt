@@ -13,6 +13,7 @@ public abstract class Punkt {
     protected int xPos;
     protected int yPos;
     protected char symbol = '?';
+    protected int varv = 0x00000000;
     protected HashMap<Long, Punkt> viideSalvestuskohale;
     protected boolean peidetud;
 
@@ -45,6 +46,14 @@ public abstract class Punkt {
 
     public char hangiSymbol() {
         return symbol;
+    }
+
+    public int hangiVarv() {
+        return varv;
+    }
+
+    public void seaVarv(int varv) {
+        this.varv = varv;
     }
 
     public void seaSymbol(char symbol) {

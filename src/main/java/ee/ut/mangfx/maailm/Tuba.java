@@ -62,10 +62,15 @@ public class Tuba {
         );
         Ese ese = new Ese(maailm, esemeAsukoht.x, esemeAsukoht.y);
         ese.seaSymbol('$');
-        if (Math.random() < 0.1)
+        ese.seaVarv(0x008800);
+        if (Math.random() < 0.1) {
             ese.seaSymbol('€');
-        if (Math.random() < 0.1)
+            ese.seaVarv(0x004488);
+        }
+        if (Math.random() < 0.1) {
             ese.seaSymbol('£');
+            ese.seaVarv(0x882200);
+        }
         if (Math.random() < 0.2) {
             esemeAsukoht = new Koordinaat(
                     (int) (Math.random() * xSuurus) + xAlgus,

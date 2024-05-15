@@ -59,6 +59,7 @@ public class Mangija extends Tegelane {
             tegelane.muudaElusid(-1);
             Sonumid.lisaSonum("Mängija ründas tegelast " + tegelane.hangiSymbol());
             if (tegelane.hangiElud() <= 0) {
+                varastaEsemed(tegelane);
                 lisaSkoori(5);
                 Sonumid.lisaSonum("Tegelane " + tegelane.hangiSymbol() + " suri sinu rünnaku tagajärjel.");
             }
