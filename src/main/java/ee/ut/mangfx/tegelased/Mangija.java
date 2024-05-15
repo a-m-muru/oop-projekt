@@ -12,7 +12,6 @@ import ee.ut.mangfx.maailm.Tuba;
  */
 public class Mangija extends Tegelane {
 
-    private int algustoaSuurus = 400;
     private int skoor;
 
 
@@ -27,6 +26,7 @@ public class Mangija extends Tegelane {
      * Mängija genereerib ise esimese toa
      */
     public void looAlgusTuba() {
+        int algustoaSuurus = 450;
         Tuba tuba = new Tuba(
                 this.maailm,
                 xPos - 30,
@@ -35,7 +35,7 @@ public class Mangija extends Tegelane {
                 algustoaSuurus
         );
         tuba.genereeriTuba();
-        tuba.binaaarneRuumipoolitamine(32);
+        tuba.binaaarneRuumipoolitamine(64);
     }
 
     @Override

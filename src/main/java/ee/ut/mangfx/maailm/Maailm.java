@@ -2,6 +2,8 @@ package ee.ut.mangfx.maailm;
 
 import ee.ut.mangfx.abi.Koordinaat;
 import ee.ut.mangfx.abi.Sonumid;
+import ee.ut.mangfx.main.Mang;
+import ee.ut.mangfx.tegelased.Kivi;
 import ee.ut.mangfx.tegelased.Mangija;
 import ee.ut.mangfx.tegelased.Tegelane;
 
@@ -16,6 +18,8 @@ public class Maailm {
     private HashMap<Long, Punkt> esemed = new HashMap<>();
     private HashMap<Long, Punkt> loksud = new HashMap<>();
     private Mangija mangija;
+
+    private Mang mang;
 
     public char[][] hangiMaastik() {
         return maastik;
@@ -55,17 +59,18 @@ public class Maailm {
         return mangija;
     }
 
-    public Maailm(int suurus) {
+    public Maailm(int suurus, Mang mang) {
         looMaastik(suurus, suurus);
+        this.mang = mang;
     }
 
-    public Maailm(int x, int y) {
+    public Maailm(int x, int y, Mang mang) {
         looMaastik(x, y);
+        this.mang = mang;
     }
 
     public void seaMangija(Mangija mangija) {
         this.mangija = mangija;
-        lisaTegelane(mangija);
     }
 
     private void looMaastik(int x, int y) {
@@ -91,6 +96,10 @@ public class Maailm {
     public Tegelane hangiTegelane(Koordinaat kus) {
         long mis = koordinaatArvuks(kus);
         return (Tegelane) tegelased.get(mis);
+    }
+
+    public void lisaKivi(Kivi kivi) {
+        mang.lisaKivi(kivi);
     }
 
     public Tegelane hangiTegelane(int x, int y) {

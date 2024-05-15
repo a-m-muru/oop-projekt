@@ -33,6 +33,7 @@ public class Mang extends AnimationTimer {
     private long viimaneUuendus;
     private Maailm maailm;
     private List<Tegelane> joosevad = new ArrayList<>();
+    private List<Tegelane> lisada = new ArrayList<>();
     private long algusaeg;
     private Kuvaja kuvaja;
     private static List<String> sonumid = new ArrayList<>();
@@ -44,11 +45,11 @@ public class Mang extends AnimationTimer {
      */
     public void alusta() {
         algusaeg = System.currentTimeMillis();
-        this.maailm = new Maailm(500, 500);
+        this.maailm = new Maailm(500, 500, this);
         Mangija mangija = new Mangija(maailm, 50, 50);
         maailm.seaMangija(mangija);
         // testimiseks
-        looLimuseid(300);
+        looLimuseid(400);
         looLuukered(100);
         looKummitused(100);
         Sonumid.kustutaSonumid();
@@ -68,7 +69,8 @@ public class Mang extends AnimationTimer {
      * Mängu põhitsükkel.
      */
     private void pohiTsykkel() {
-        // debug
+        joosevad.addAll(lisada);
+        lisada.clear();
         for (Tegelane tegelane : joosevad) {
             if (onMangijaVaatevaljas(tegelane.hangiKoordinaat()) && tegelane.hangiElud() > 0)
                 tegelane.teeMidagi();
@@ -119,7 +121,7 @@ public class Mang extends AnimationTimer {
     }
 
     private Koordinaat hangiSuvalineTegelaseAsukoht() {
-        Koordinaat tegAsukoht = new Koordinaat((int) (Math.random() * maailm.hangiSuurusX()),
+        Koordinaat tegAsukoht = new Koordinaat(50 + (int) (Math.random() * (maailm.hangiSuurusX() - 50)),
                 (int) (Math.random() * maailm.hangiSuurusY()));
         while (maailm.hangiMaastikuKoht(tegAsukoht.x, tegAsukoht.y) == '#' ||
                 maailm.hangiTegelane(tegAsukoht.x, tegAsukoht.y) != null) {
@@ -151,6 +153,23 @@ public class Mang extends AnimationTimer {
             Kummitus kummitus = new Kummitus(maailm, asukoht.x, asukoht.y);
             joosevad.add(kummitus);
         }
+    }
+
+    public void looKivid(int arv) {
+        for (int i = 0; i < arv; i++) {
+            Koordinaat asukoht = hangiSuvalineTegelaseAsukoht();
+            Kivi kivi = new Kivi(maailm, asukoht.x, asukoht.y);
+            joosevad.add(kivi);
+        }
+    }
+
+    public void lisaKivi(Kivi kivi) {
+        try {
+            wait(1);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        lisada.add(kivi);
     }
 
     public void salvestaTulemused() {

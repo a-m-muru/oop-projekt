@@ -86,6 +86,9 @@ public class Tuba {
                     loksuAsukoht.x, loksuAsukoht.y,
                     '^',
                     (int) (Math.random() * 5) + 1);
+            if (Math.random() < 0.1) {
+                loks.seaKivi(true);
+            }
             maailm.lisaLoks(loks);
         }
     }
