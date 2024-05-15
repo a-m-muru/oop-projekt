@@ -77,16 +77,17 @@ Klasside ja meetodite tegemine oli üsna lihtne, kuid sisendi probleemi lahendam
 
 Projekti 2. etapp
 10.04.2024 Paigutasime seni terminalis toimunud tegevuse üle graafilisse keskkonda. Lisaks muutsime sisendit, et see kontrolliks klahvivajutusi. Graafilisse keskkonda üleminekuga lahenes ka meie non-blocking input'i probleem:D
-17.04.2024 Tegime mängule erinevad toad, mille vahel saab liikuda. Lahendasime oma "uks nurgas" probleemi. Lisaks selleke lisasime mängu kõrvale sõnumid ülesvõetud eseme ja mängu skoori kohta. 
+17.04.2024 Tegime mängule erinevad toad, mille vahel saab liikuda. Lahendasime oma "uks nurgas" probleemi. Lisaks sellele lisasime mängu kõrvale sõnumid ülesvõetud eseme ja mängu skoori kohta. 
 24.04.2024 Tegelesime sellega, et toad oleksid ilusamad, sõnumid skoori ja elude kohta ei kaoks ära ning et rünnaku alla sattudes väheneksid tegelaste elud.
 2.05.2024 Panime nulleludega tegelased päriselt surema. Lisasime kõrgskoori lugemise, mis salvestatakse faili ning kuvatakse mängu alguses. Lisasime nupu üles korjatud esemete kuvamiseks.
 09.05.2024 Tegime lõksud, millesse sattudes kaotavad tegelased elusid, südamed, mis annavad elusid juurde. Uued vaenlased luukered ja kummitused, veel tegelased enam ei liigu kui nad mängija vaateväljast väljas on.
+15.05.2024 Lõplik viimistlus
 ```
 
 ### Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
 
 1. etapil mõlema liikme panus umbes 8h.
-2. etapil mõlema liikme panus umbes 10h.
+2. etapil mõlema liikme panus umbes 12h.
 
 ### Tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
 
@@ -134,11 +135,11 @@ Tegelased:
 
 * on olemas peategelane, kes liigub ringi mängumaailmas, peab läbima erineva raskusastmega tube. Peategelase tähis
   on "@".
-* tegelased 'limused', kes liiguvad ringi mängumaailmas ning takistavad peategelasel tubade läbimist.
-* tegelased 'luukered', kes liiguvad teatud intervallide tagant
-* tegelased 'kummitused', kes liiguvad teatud intervallide tagant ja seintest läbi
+* tegelased 'limused', tähisega "o", kes liiguvad ringi mängumaailmas ning takistavad peategelasel tubade läbimist.
+* tegelased 'luukered', tähisega "☠", kes liiguvad teatud intervallide tagant
+* tegelased 'kummitused', tähisega "☃", kes liiguvad teatud intervallide tagant ja seintest läbi
 * peategelasel on võimalik koguda punkte. Kõrgskoorid salvestatakse faili mängija surres (siis ja ainult siis)
-* peategelasel on võimalik kaotada elusid aga on võimalik neid ka juurde saada.
+* peategelasel on võimalik kaotada elusid aga on võimalik neid ka juurde saada, näiteks saades kätte "❤"
 
 Maailm:
 

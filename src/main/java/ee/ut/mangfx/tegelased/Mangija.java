@@ -33,7 +33,7 @@ public class Mangija extends Tegelane {
                 yPos - 30,
                 algustoaSuurus,
                 algustoaSuurus
-                );
+        );
         tuba.genereeriTuba();
         tuba.binaaarneRuumipoolitamine(32);
     }
@@ -41,7 +41,14 @@ public class Mangija extends Tegelane {
     @Override
     public void korjaEse(Ese ese) {
         super.korjaEse(ese);
-        lisaSkoori(1);
+        String sumbol = String.valueOf(ese.hangiSymbol());
+        if (sumbol.equals("€")) {
+            lisaSkoori(1);
+        } else if (sumbol.equals("$")) {
+            lisaSkoori(3);
+        } else if (sumbol.equals("£")) {
+            lisaSkoori(5);
+        }
         Sonumid.lisaSonum("Korjasid üles eseme " + ese.hangiSymbol());
     }
 
