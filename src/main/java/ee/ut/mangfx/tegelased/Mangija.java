@@ -43,9 +43,9 @@ public class Mangija extends Tegelane {
         super.korjaEse(ese);
         String sumbol = String.valueOf(ese.hangiSymbol());
         if (sumbol.equals("€")) {
-            lisaSkoori(1);
-        } else if (sumbol.equals("$")) {
             lisaSkoori(3);
+        } else if (sumbol.equals("$")) {
+            lisaSkoori(1);
         } else if (sumbol.equals("£")) {
             lisaSkoori(5);
         }
