@@ -13,6 +13,7 @@ public class Loks extends Punkt {
         super(maailm, viideSalvestuskohale, xPos, yPos, symbol);
         this.teebHaiget = teebHaiget;
         peidetud = true;
+        varv = 0x880000;
     }
 
 

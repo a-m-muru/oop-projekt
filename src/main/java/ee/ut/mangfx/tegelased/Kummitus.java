@@ -12,6 +12,7 @@ public class Kummitus extends Tegelane {
         super(maailm, xPos, yPos);
         noclip = true;
         symbol = '☃';
+        varv = 0xaaaaaa;
     }
 
     @Override

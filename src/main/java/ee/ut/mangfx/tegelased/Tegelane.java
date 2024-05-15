@@ -30,7 +30,8 @@ public class Tegelane extends Punkt {
 
     public void muudaElusid(int vorra) {
         elud += vorra;
-        if (elud <= 0) {
+        elud = Math.max(elud, 0);
+        if (elud == 0) {
             maailm.kustutaTegelane(this);
         }
     }
@@ -78,6 +79,17 @@ public class Tegelane extends Punkt {
         if (ese instanceof Syda) {
             muudaElusid(3);
             esemed.remove(ese);
+        }
+    }
+
+    public void eemaldaEse(Ese ese) {
+        esemed.remove(ese);
+    }
+
+    public void varastaEsemed(Tegelane kellelt) {
+        for (Ese ese : kellelt.hangiEsemed()) {
+            korjaEse(ese);
+            kellelt.eemaldaEse(ese);
         }
     }
 

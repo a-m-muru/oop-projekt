@@ -8,6 +8,7 @@ public class Limus extends Tegelane {
     public Limus(Maailm maailm, int xPos, int yPos) {
         super(maailm, xPos, yPos);
         seaSymbol('o');
+        seaVarv(0x00aa11);
     }
 
     @Override

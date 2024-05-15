@@ -10,6 +10,7 @@ public class Luukere extends Tegelane {
     public Luukere(Maailm maailm, int xPos, int yPos) {
         super(maailm, xPos, yPos);
         symbol = '☠';
+        varv = 0x888888;
     }
 
     @Override
