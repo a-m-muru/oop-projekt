@@ -15,7 +15,7 @@ Salvestada vahepealne tulemus faili nii, et mängu uuesti alustades näev eelmis
 
 ## Kasutusjuhend
 
-Käivitada klass main.Main, soovitatavalt arvuti terminalis (out/production/main-kaustas jooksutada `java main/Main`).
+Jooksutada ./gradlew run selles kaustas
 
 Selleks, et liikuda...
 
