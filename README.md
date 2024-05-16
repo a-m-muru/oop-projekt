@@ -83,7 +83,7 @@ Projekti 2. etapp
 24.04.2024 Tegelesime sellega, et toad oleksid ilusamad, sõnumid skoori ja elude kohta ei kaoks ära ning et rünnaku alla sattudes väheneksid tegelaste elud.
 2.05.2024 Panime nulleludega tegelased päriselt surema. Lisasime kõrgskoori lugemise, mis salvestatakse faili ning kuvatakse mängu alguses. Lisasime nupu üles korjatud esemete kuvamiseks.
 09.05.2024 Tegime lõksud, millesse sattudes kaotavad tegelased elusid, südamed, mis annavad elusid juurde. Uued vaenlased luukered ja kummitused, veel tegelased enam ei liigu kui nad mängija vaateväljast väljas on.
-15.05.2024 Lõplik viimistlus
+15.05.2024 Lõplik viimistlus - värvid, kivilõksud
 ```
 
 ### Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
