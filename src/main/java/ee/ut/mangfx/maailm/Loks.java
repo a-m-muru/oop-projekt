@@ -28,6 +28,7 @@ public class Loks extends Punkt {
     public void teeKivi() {
         if (kiviTehtud)
             return;
+        Sonumid.lisaSonum("Lõksust paiskub välja kivimürakas!");
         kiviTehtud = true;
         Kivi kivi = new Kivi(this.maailm,
                 this.xPos + (Math.random() < 0.5 ? -1 : 1),
@@ -44,12 +45,11 @@ public class Loks extends Punkt {
 
         naita();
         if (teebKivi) {
-            Sonumid.lisaSonum("Lõksust paiskub välja kivimürakas!");
             teeKivi();
             return;
         }
         if (tegelane instanceof Mangija) {
-            Sonumid.lisaSonum("Jooksid lõksu otsa!");
+            Sonumid.lisaSonum(  "Jooksid lõksu otsa!");
         }
         tegelane.muudaElusid(-Math.abs(teebHaiget));
     }
