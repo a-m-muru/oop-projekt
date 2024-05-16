@@ -14,7 +14,9 @@ Luua mäng, milles on võimalik saada punkte, kaotada elusid ning läbida tube.
 Salvestada vahepealne tulemus faili nii, et mängu uuesti alustades näev eelmist suurimat tulemust.
 
 ## Kasutusjuhend
+
 Käivitamiseks:
+
 - Linux: Jooksutada ./gradlew run selles kaustas
 - Windows: Jooksutada gradlew run selles kaustas
 
@@ -38,11 +40,14 @@ Selleks, et näha nimekirja kogutud esemetest saab avada uut akent vajutades nup
 - PACKAGE main, kus sees on
 
 * Mang - põhiline klass, kus määratakse peategelane, tegelased, algkoordinaadid ning hallatakse sisendit.
+  Põhitsükkel on siin
 
 - PACKAGE maailm, kus sees on klassid:
 
-* Maailm - klass, mis sisaldab mänguala andmeid, tegelaste positsioonid, tubade positsioonid ja suurused.
-* Tuba - klass, mis genereerib toa mängumaastikule
+* Maailm - klass, mis sisaldab mänguala andmeid, tegelaste positsioonid, tubade positsioonid.
+* Tuba - klass, mis genereerib ristkülikukujulise toa mängumaastikule
+*
+    * meetod genereeriTuba(): loob seinad
 * Punkt - klass, milles on positsoiinikoordinaadid maailma ruudustikus ning kuvatavat sümbolit.
 * Ese - klass, mis kirjeldab ülesvõetavat eset ning selle omadusi.
 * Loks - klass, mis kontrollib lõkse, mis üle kõndinud tegelaste elusid võtavad
@@ -50,13 +55,14 @@ Selleks, et näha nimekirja kogutud esemetest saab avada uut akent vajutades nup
 
 - PACKAGE visuaal, kus sees on
 
-* Kuvaja - klass, mis genereerib maailma pildi ning kuvab seda, uuendab mängu seisu andes teada vahepealset statistikat
-  ning võimaldab taasluua kuvari pärast iga liigutuse tegemist.
+* Kuvaja - klass, mis genereerib maailma pildi ning info ning kuvab need
 
 - PACKAGE tegelased, kus sees on klassid:
 
 * Mangija - klass, mis kontrollib peategelast
 * Tegelane - klass, mis kontrollib mängu teisi tegelasi
+*
+    * meetod teeMidagi() - seda kutsutakse mängu põhitsüklist ning iga Tegelase alamklass implementeerib selle
 * Limus - klass, mis loob peategelast ründavaid tegelasi
 * Luukere - klass, mis loob peategelast ründavaid tegelasi, kes närviliselt ringi jooksevad
 * Kummitus - klass, mis loob peategelast ründavaid tegelasi, kes seintest läbi liiguvad
