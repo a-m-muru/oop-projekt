@@ -59,6 +59,7 @@ Selleks, et näha nimekirja kogutud esemetest saab avada uut akent vajutades nup
 * Limus - klass, mis loob peategelast ründavaid tegelasi
 * Luukere - klass, mis loob peategelast ründavaid tegelasi, kes närviliselt ringi jooksevad
 * Kummitus - klass, mis loob peategelast ründavaid tegelasi, kes seintest läbi liiguvad
+* Kivi - klass, mis loob peategelast ründavaid esemeid, millega kokkupuutel tegelane sureb
 
 - PACKAGE abi, kus on
 - Abi - abimeetodid
