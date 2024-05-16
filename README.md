@@ -14,8 +14,9 @@ Luua mäng, milles on võimalik saada punkte, kaotada elusid ning läbida tube.
 Salvestada vahepealne tulemus faili nii, et mängu uuesti alustades näev eelmist suurimat tulemust.
 
 ## Kasutusjuhend
-
-Jooksutada ./gradlew run selles kaustas
+Käivitamiseks:
+- Linux: Jooksutada ./gradlew run selles kaustas
+- Windows: Jooksutada gradlew run selles kaustas
 
 Selleks, et liikuda...
 
